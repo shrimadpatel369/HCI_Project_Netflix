@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Netflix - Mobile</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflixRed: '#E50914',
+            netflixBlack: '#000000',
+            netflixGrey: '#121212',
+            netflixLightGrey: '#222222',
+            netflixTextSecondary: '#b3b3b3',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-layout">
+    /* Custom scrollbar hiding for horizontal lists */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen pb-20">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-black px-4 py-4 flex justify-between items-center" data-purpose="sticky-header">
+<a href="home.html" style="text-decoration: none; color: white;">
+<h1 class="text-2xl font-bold">My Netflix</h1>
+</a>
+<div class="flex items-center space-x-4">
+<!-- Search Icon -->
+<button class="text-white">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Profile Avatar (Account Settings Link) -->
+<a href="account.html">
+<div class="w-8 h-8 rounded bg-blue-500 overflow-hidden cursor-pointer" data-purpose="profile-icon">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI-aockucc4guLyjKVXcHaNL6yQJ2uzxDHggUcoKUBM5QjstH1JgFGjbMXXWOjMMDjmZRJlv9EkmtciVngpUcg5AzgYThDm0pSnRfBsBOEVzBkPN388i3QBi9jYjWvajwEABhXxeuABGvfsWO7iu6q6oCt1gQS-KYqHc4i2xvKVkvmFvkncK-LddOcW6-5hjfRJovNnoSDqLEZME-_HEW8V5otBmvnrgl0lKauKS8yZY3YaKYIAJx3Spmm5IXVqDvx2q9xrb5HY34"/>
+</div>
+</a>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main class="flex-grow space-y-8">
+<!-- BEGIN: NotificationsSection -->
+<section class="px-4" data-purpose="notifications-preview">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center space-x-2">
+<div class="bg-netflixRed w-2 h-2 rounded-full"></div>
+<h2 class="text-lg font-bold">Notifications</h2>
+</div>
+<svg class="w-5 h-5 text-netflixTextSecondary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m8.25 4.5 7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Notification Item -->
+<div class="flex items-center space-x-3 bg-netflixLightGrey/30 p-3 rounded-lg">
+<img alt="Show Poster" class="w-12 h-16 rounded object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl-egSYZrEhP-ohNTFTIADcKGX-FTJI6jHG50BzXoPXHuP4qTEVqKvWoD0mEm-vd-N7m0Qcn8Y_UJAzv-N22G4NU-Fa1ygXKZfKTHVj1extV7-zimP_Dgoc8UyXSyE2D9SJqI_f6HKEbuzcoYQS2wWciLdgoT7DZZrg3iUIuwMMlYmGwXaeo9ngW5air9CHeHaXl5SSpS31CrkOw84Mul545D65BrJKzOdZk5Q-r6ARB9P1e7Mu0-l7Ql-QFkyam4HOWMtcZzAoOY"/>
+<div>
+<p class="text-sm font-semibold">New Arrival</p>
+<p class="text-xs text-netflixTextSecondary leading-tight">Stranger Things Season 5 is coming soon. Add it to My List.</p>
+<p class="text-[10px] text-netflixTextSecondary mt-1">Oct 24</p>
+</div>
+</div>
+</section>
+<!-- END: NotificationsSection -->
+<!-- BEGIN: DownloadsSection -->
+<section class="px-4" data-purpose="downloads-management">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold">Downloads</h2>
+<svg class="w-5 h-5 text-netflixTextSecondary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m8.25 4.5 7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Visibility of System Status: Storage Bar -->
+<div class="mb-6 p-4 bg-netflixLightGrey rounded-xl" data-purpose="storage-indicator">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-medium">Device Storage</span>
+<span class="text-xs text-netflixTextSecondary">45GB of 128GB used</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-1.5 overflow-hidden">
+<div class="bg-blue-400 h-full w-[35%]"></div>
+</div>
+<div class="flex mt-2 space-x-4">
+<div class="flex items-center space-x-1">
+<div class="w-2 h-2 rounded-full bg-blue-400"></div>
+<span class="text-[10px] text-netflixTextSecondary">Netflix (12.4GB)</span>
+</div>
+<div class="flex items-center space-x-1">
+<div class="w-2 h-2 rounded-full bg-gray-500"></div>
+<span class="text-[10px] text-netflixTextSecondary">Used (32.6GB)</span>
+</div>
+</div>
+</div>
+<!-- Downloaded Items List -->
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="flex items-center space-x-4" data-purpose="download-item">
+<div class="relative w-28 h-16 rounded overflow-hidden">
+<img alt="Movie Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmB-Dgp36NtS2STvZHgzsz2CNMpaaOEsXfBeAvCCA_RH5MC81AY2Nkx3Hvp-BFd8wwA9ezlEpCUW2ileYolL7enENlicM5jxteRNUhU3PbFhHnOhlaJFHgECCvCRhQkcldFOlLNBCBdF6VS-mxiPF4C2cTvYg4kyeDA3m-DQqbv88NoWcdvekAPAZNtDFFMqKNrSfASIQq8cxA0iIonxrs7AKyFEJt8XsG8oWCILJuyzyAvB99nR450DyCOIyggWoan7tVnm4nngo"/>
+<div class="absolute bottom-1 right-1 bg-black/60 px-1 rounded text-[10px]">1h 45m</div>
+</div>
+<div class="flex-grow">
+<h3 class="text-sm font-medium">The Gray Man</h3>
+<p class="text-xs text-netflixTextSecondary">Movie • 1.2GB</p>
+</div>
+<button class="text-white">
+<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center space-x-4" data-purpose="download-item">
+<div class="relative w-28 h-16 rounded overflow-hidden">
+<img alt="Show Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQJE_JLeV-vIljDrANLmqLg60Hjrh-LkaGmakB4ECtoei5AtJgEH7VeoCuQtFavcLvkgaKnuopFbNnFttr1vUKeCL3AKofW-7IhvvCytuZh51QLYKiko6bbxC5Ke-tR72jIPStjGWuM4qhlhVmrPoYLjLK_jmwkJk-i2ZubUFjBVhoQPS6qkeDj0CA9jq88geZA7AwDI1D69G3wUiDKwVb424dIo5q-CCJB5W161RIFFNkyeAxamKlcASqh6PNqv-l09J-jRGEFWw"/>
+<div class="absolute bottom-1 right-1 bg-black/60 px-1 rounded text-[10px]">3 Episodes</div>
+</div>
+<div class="flex-grow">
+<h3 class="text-sm font-medium">Wednesday</h3>
+<p class="text-xs text-netflixTextSecondary">Series • 2.4GB</p>
+</div>
+<button class="text-white">
+<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</section>
+<!-- END: DownloadsSection -->
+<!-- BEGIN: MyListSection -->
+<section class="pl-4 pb-4" data-purpose="user-watchlist">
+<div class="flex items-center justify-between pr-4 mb-4">
+<h2 class="text-lg font-bold">My List</h2>
+<svg class="w-5 h-5 text-netflixTextSecondary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m8.25 4.5 7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Horizontal Scrollable Grid -->
+<div class="flex overflow-x-auto space-x-3 hide-scrollbar">
+<!-- Poster Item -->
+<div class="flex-none w-32">
+<img alt="Poster 1" class="w-full aspect-[2/3] object-cover rounded shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAySUNY6SyliE8D2QS7ZchvxnANIwu859vyVFLhqpZvyp9ZC7poSguEX7JKAwAzV9sUnrsf_xEHW-p0NbOvguc0T93V-csVUedofxUdID_mVW0x7JHB4ippx2BA1gWjySdMz3iyboiFjjhEIbWbaVV7CwDws3OZfCTzkVIkQrHVARDWnrX60pHeN3ESj6xd7jFxKy1AOx-PtIp2Z9ciOXrBY0zqEbQjGkSD7J9KNYKuC4C3VeFMfIooU5kx-qFKaIeHtauJeIK2GcQ"/>
+</div>
+<div class="flex-none w-32">
+<img alt="Poster 2" class="w-full aspect-[2/3] object-cover rounded shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM0vGUFewUTRmUZKn3sWnnSXCWdB1rzqazWGf9668gLmobaYvMlGdxc6yofaXIf8F0INNsEaTY-W8BpB4-ZOx2Ktvv1fd-ZVbmrp7w9VAT175p9dALaMMOxEqHNouhQhtmn6ww72HG99V7mQYFr3IPt6rAYiAJPX6YdxiQFoMVOURvsnAjHQfzBBCIhEQOn2AwXVR0HllrIwmmXvI2BVQ6A8dlOFDmBmtVPLwGGYKh7aDkZ5CxJGKXPLmZV6tOu5JuQGEOCh64n2o"/>
+</div>
+<div class="flex-none w-32">
+<img alt="Poster 3" class="w-full aspect-[2/3] object-cover rounded shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNq5r_5ap6Euj4-NnthSHXiLyCZKAiJZPBIoYwP7XBBVkFYRX2FVZyDSTWuEQJjcj8eLl73c5eLDpuzIbruChsso9TG7yqZn0AcxSA7_Mpq02RayTfdck5SvzaeSSbUAMcwD7Itjh-bcjVCHrRzZkPmwXbXsMTg1y4ApyevJHcsxu9zbJG5o8WTZRElnGKOfhezE8h_VC9RTBcDOezVUBmaIsDZxaXMWCvIdGJoMmbQhtaycsyEZg7sZgVh7X6KoywyFi3CO9Bxng"/>
+</div>
+<div class="flex-none w-32">
+<img alt="Poster 4" class="w-full aspect-[2/3] object-cover rounded shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPbUoPyEeuus8SKjJXWE1aFRxpXF4SUMxYyJrZiFHqL1i6McLXhdPsNmtL6Ad0hL942YA0z9clc3L6ruAYw0yms88PD87k0FsELO0eYMrXB1y3Lh64QnVmHl-6vyvaKbVOmxU3VE1njAFi2OwWjetNNjXcaEFe2Q48QL_p3Yxv2u3shC1BFhNDzBNrcb-DAFxNz5tSYku2XAXoBveZN268mZb5GejrXIvt7fTk9voiNbRtthMquYyNUP8T7OQYPN6udVeC-4RQhko"/>
+</div>
+</div>
+</section>
+<!-- END: MyListSection -->
+</main>
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-md border-t border-netflixLightGrey flex justify-around items-center py-2 px-1 z-50" data-purpose="bottom-nav">
+<!-- Home -->
+<a href="home.html">
+<button class="flex flex-col items-center justify-center space-y-1 w-1/4">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px]">Home</span>
+</button>
+</a>
+<!-- Games -->
+<button class="flex flex-col items-center justify-center space-y-1 w-1/4 opacity-50">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px]">Games</span>
+</button>
+<!-- New & Hot -->
+<button class="flex flex-col items-center justify-center space-y-1 w-1/4 opacity-50">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px]">New &amp; Hot</span>
+</button>
+<!-- My Netflix (Active State) -->
+<button class="flex flex-col items-center justify-center space-y-1 w-1/4">
+<div class="w-6 h-6 rounded border-2 border-white overflow-hidden">
+<img alt="Profile Active" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALogDp5pmxUNfd1x_cVRSP3bjnUtGDHhls1myc7RJ_LbXumTy8V2bItrykrwIKrakj-5zrIz4s-uV58jwr-og83eI9wZXtEuUIxkhBZqa-_ioE11oFBJONPeSgx5Gjr0ZX-Zcjm_Y7wfwd4hqJnwKYoIYgSZSsMg34bQuHBqzFpydufT_IFsDW4smpUHrloWrzeSNz2WpPG8ThRg4L15o1DNiPjmA5dUiXFMwsg2MCKfDs26u-u-fgl9CiSHarEOhG7oH9HWkmgtw"/>
+</div>
+<span class="text-[10px] font-bold">My Netflix</span>
+</button>
+</nav>
+<!-- END: BottomNavigation -->
+</body></html>

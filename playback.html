@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix Player UI</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  font-family: Arial, sans-serif;
+  color: white;
+  height: 100vh;
+}
+
+/* Player Container */
+.player {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: black;
+}
+
+/* Top Bar */
+.top-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  opacity: 0.8;
+}
+
+/* Bottom Controls */
+.controls {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background: #555;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.progress {
+  width: 20%;
+  height: 100%;
+  background: red;
+}
+
+.dot {
+  position: absolute;
+  left: 20%;
+  top: -4px;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+}
+
+/* Control Row */
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left Controls */
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 22px;
+}
+
+/* Right Controls */
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 22px;
+}
+
+/* Center Time */
+.time {
+  text-align: center;
+  flex: 1;
+  font-size: 16px;
+  color: #ccc;
+}
+
+/* Buttons */
+button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player">
+
+  <!-- Top -->
+  <div class="top-bar">
+    <a href="title-details.html" style="text-decoration: none; color: white; cursor: pointer;">
+      <div>⬅</div>
+    </a>
+    <div>📺</div>
+  </div>
+
+  <!-- Bottom Controls -->
+  <div class="controls">
+
+    <!-- Progress -->
+    <div class="progress-container">
+      <div class="progress" id="progress"></div>
+      <div class="dot" id="dot"></div>
+    </div>
+
+    <!-- Control Row -->
+    <div class="control-row">
+
+      <!-- Left -->
+      <div class="left-controls">
+        <button onclick="togglePlay()">⏸</button>
+        <button onclick="skip(-10)">⏪10</button>
+        <button onclick="skip(10)">⏩10</button>
+        <button>🔊</button>
+      </div>
+
+      <!-- Time -->
+      <div class="time">'83</div>
+
+      <!-- Right -->
+      <div class="right-controls">
+        <button>💬</button>
+        <button>⚙</button>
+        <button onclick="toggleFullScreen()">⛶</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+let playing = true;
+
+function togglePlay() {
+  playing = !playing;
+  alert(playing ? "Playing" : "Paused");
+}
+
+function skip(seconds) {
+  alert("Skipped " + seconds + " seconds");
+}
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+</script>
+
+</body>
+</html>

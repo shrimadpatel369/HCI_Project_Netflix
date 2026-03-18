@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Netflix - Discover</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter for clean typography -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="global-styles">
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    /* Custom scrollbar for a sleek dark look */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #141414;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }
+    .hero-gradient {
+      background: linear-gradient(to top, #0f0f0f 0%, transparent 100%), 
+                  linear-gradient(to right, rgba(15, 15, 15, 0.8) 0%, transparent 60%);
+    }
+    .poster-hover:hover {
+      transform: scale(1.05);
+      z-index: 10;
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="flex">
+<!-- BEGIN: Sidebar Navigation -->
+<nav class="fixed left-0 top-0 h-screen w-20 flex flex-col items-center py-8 bg-black border-r border-gray-800 z-50" data-purpose="sidebar">
+<div class="mb-12">
+<!-- Logo Placeholder -->
+<div class="w-10 h-10 rounded-md flex items-center justify-center font-bold text-xl" style="background-color: #E50914;">N</div>
+</div>
+<ul class="flex flex-col gap-10 text-gray-400">
+<li class="cursor-pointer hover:text-white text-white transition-colors">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</li>
+<li class="cursor-pointer hover:text-white transition-colors">
+<a href="search.html" style="display: flex; align-items: center; justify-content: center; color: currentColor;">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</li>
+<li class="cursor-pointer hover:text-white transition-colors">
+<a href="new-and-hot.html" style="display: flex; align-items: center; justify-content: center; color: currentColor;">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</li>
+<li class="cursor-pointer hover:text-white transition-colors">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</li>
+<li class="cursor-pointer hover:text-white transition-colors">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</li>
+</ul>
+<div class="mt-auto">
+<a href="my-netflix.html">
+<img alt="Profile" class="rounded-full w-10 h-10 border-2 border-transparent hover:border-white cursor-pointer transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKQw1Zz2kWx22IDegq98IDVKFhpHmau7d7oNKy3gU6WFz1WOAe2NZBl8QUfUWggYiCQg-9leFK4-hDAK44YOFor7IkMAtptQssCHa0bOks4JnR3dCzymYLCibYJ6eNSiD1rSQTUFFRySxskO4SYZsAdn72nNb8b8Mor8EYC5cHHoMAHGupzOsp0813vOMC6JeNikyitjB7GeR9XVN7JwJ1HQw45jB7eMTlKt5DnsjLJlpcAvRC0UpTWtx4ijBl84Fd9dcBwUSbHqeb"/>
+</a>
+</div>
+</nav>
+<!-- END: Sidebar Navigation -->
+<!-- Main Content Area -->
+<main class="ml-20 w-full min-h-screen relative">
+<!-- BEGIN: Hero Section -->
+<section class="relative h-[85vh] w-full" data-purpose="hero-section">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="The Midnight Sky" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASH6_lfv4Lcr4OcH6JW9uHXMz77YzyLCp85lcjULdVcuGl12NRdy09ZabMtOCQg5dmnMfbs6kDRL42A-_XyD6ZXvoHtiEDbMXuD-xjPmjdc3G-Ub3CVSI9bBE9BPXMIDiRQPxNX3YVJcAuYsY3ciRRVR-zs6Iii00lA8IHW5ofUWD3aiEBNzCEGeLl7jLQ2P41mFH38lOsvsr7HqVA27UAkbvAICWsImw-NULqOr_hr1hSwuqMH5IAExThfyVffcZ6XVOgwTuLBXV8"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 h-full flex flex-col justify-center px-12 max-w-2xl">
+<span class="text-white text-xs font-bold px-2 py-1 uppercase tracking-widest w-max mb-4" style="background-color: #E50914;">Featured Movie</span>
+<h1 class="text-6xl font-bold mb-4">The Midnight Sky</h1>
+<p class="text-lg text-gray-300 mb-8 leading-relaxed">
+          A lone scientist in the Arctic races to stop Sully and her fellow astronauts from returning home to a mysterious global catastrophe.
+        </p>
+<div class="flex gap-4">
+<a href="title-details.html" style="text-decoration: none;">
+<button class="flex items-center gap-2 bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition-colors">
+<svg class="h-6 w-6 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"></path></svg>
+            Play Now
+          </button>
+</a>
+<button class="flex items-center gap-2 bg-gray-500/50 text-white px-8 py-3 rounded-md font-semibold backdrop-blur-md hover:bg-gray-500/70 transition-colors">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            More Info
+          </button>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- Scrollable Content Rows -->
+<div class="px-12 -mt-24 relative z-20 space-y-12 pb-20">
+<!-- BEGIN: Continue Watching -->
+<section data-purpose="continue-watching">
+<h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          Continue Watching
+          <span class="text-gray-500 text-sm font-normal">for User</span>
+</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+<!-- Item 1 -->
+<div class="group relative cursor-pointer">
+<div class="relative overflow-hidden rounded-md">
+<img alt="Interstellar" class="w-full aspect-video object-cover poster-hover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6LvD7gNRhyK-UE8BnMcREYw1ZS1pn1IOWSSYsLz_Y6XaquuD4wAGMNIjcOWe6xZGnl4cblvVuAvHP6o1YFX0dAyz5RgikdNLcY4UjKeSE-Py9XJzRdYbaSWjHSYLAb1Ep9AAWzVL1C9SL_w4sraa9v3doDisFEhdrpTKg8PyhqThreCc96LG-LVGtHVH4rqERcP6JQP11XEarMuwwsgnKQs8j8OQ432iSvxxOjTDuSs9oehBbCI37yITSareyr6Ar1Wokr9WOHW6m"/>
+<!-- Progress Bar -->
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gray-700">
+<div class="bg-red-600 h-full" style="width: 75%;"></div>
+</div>
+</div>
+<div class="mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-sm font-medium">Interstellar</span>
+<span class="text-xs text-gray-400">45m left</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative cursor-pointer">
+<div class="relative overflow-hidden rounded-md">
+<img alt="Stranger Things" class="w-full aspect-video object-cover poster-hover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8_wXu_1HZQyDLcNJIwNABlfA0R7oLHnvfLNEFuuP33TeIytl5xLizsRC3sXmXDizlSjpyXIJkGpa2Ut_yy53ffS4ddMm1SSq61DlwkyAHLfjxJxY9udrwzSsy4S1SCrQkS4YEVMb1gz_GLTiiKxpVLof3UKEFACrWqydzvfH-ugyyMIODPboWboZNs76JMUPvIIWFopzrL45vo_9MYuy5errrDoGm6iL8Y_whIO34pW5MDGPLJeO0CZ64haqe4uIQyzwhsos4VI8B"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gray-700">
+<div class="bg-red-600 h-full" style="width: 20%;"></div>
+</div>
+</div>
+<div class="mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-sm font-medium">Stranger Things</span>
+<span class="text-xs text-gray-400">S4:E1</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group relative cursor-pointer">
+<div class="relative overflow-hidden rounded-md">
+<img alt="The Crown" class="w-full aspect-video object-cover poster-hover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN4YyCa0bNDxjf-eAiVYHrNo5y3PPyKR68GTIxW3be39sgMV-kDZ-alFPZrisFTHBEUmDnMKjdji45ZO_GJ1SIY0gx-aXvHkyJGyNKYFLn-v7a1-RS0vds6ASZwwyivkARsPw0aH2un0K1-FKEhcuwNdvVucI5_XVzQ0kK53n3MCl7nbwc4X2Gb6pWJzyvyLl5ckfC_vbr1sAG2HYicaA0swCFqU5qw80SVpR6wi2gvxTNXR8hHBaV8vkgWK-6d8tvZUBQEfjSyxnV"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gray-700">
+<div class="bg-red-600 h-full" style="width: 90%;"></div>
+</div>
+</div>
+<div class="mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-sm font-medium">The Crown</span>
+<span class="text-xs text-gray-400">8m left</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group relative cursor-pointer">
+<div class="relative overflow-hidden rounded-md">
+<img alt="The Witcher" class="w-full aspect-video object-cover poster-hover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXama4_7jbiXRB61U7Y4A2RsKXYrSat1X7mlOozSZsz5NlhlqoQTB-O3Drm6nF0Hct6tbKjSzgXzTULxj7zhpx2qQ9XinMquckeeY7DbaOVTzDJLTPHmKGxi2q6U4HpIotyIVXtfgbZ5n_hZKf3S44ibgJSjz-6hL7lL61livjfKmM7jXX7gx6Z2QSfUEHNxjEry4W_ikUYbKP7aSJwguVQZV8lzlR7TEvi5TBGvyovkXaCoz2ig_bFe_0PEn5yNSS-JwGrUvJpinv"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gray-700">
+<div class="bg-red-600 h-full" style="width: 50%;"></div>
+</div>
+</div>
+<div class="mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-sm font-medium">The Witcher</span>
+<span class="text-xs text-gray-400">25m left</span>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="group relative cursor-pointer hidden lg:block">
+<div class="relative overflow-hidden rounded-md">
+<img alt="Dark" class="w-full aspect-video object-cover poster-hover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8et1L617WtyBfHdXURun9yV5BoAZG1obBKzHklcOp78CEQWB-ucd0MviGEf94i3YiYb7n5hPlKE9lIvrFzbTXDXGMbi7P2R_dFF5XNoiBGe17njRReDqGhSnzs-T7kHbMWJ4HmySoRZfgA2sy5eTCj1Iu-ZMx07SHwrn3dTEwAA_ljLGhhWpRlE7YxZGxlYVM18oyPn0dYOi-pJVKLvrNApHWyR5PmfcNsTf0TVrawpRX3DCcd-yL8DW_2SLEbvJJWTmTaLrG8Wfd"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gray-700">
+<div class="bg-red-600 h-full" style="width: 10%;"></div>
+</div>
+</div>
+<div class="mt-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-sm font-medium">Dark</span>
+<span class="text-xs text-gray-400">55m left</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Continue Watching -->
+<!-- BEGIN: Trending Now -->
+<section data-purpose="trending-row">
+<h2 class="text-xl font-semibold mb-4">Trending Now</h2>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<!-- Trending items use vertical poster aspect ratio -->
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJhUJqYEjaIc3B6alDtokp0eibH9YLMTQkkRPB8D-I5T3G9FCiVMlfYYMkk93Z0JkoUr895PB4BzdpskJvvLtsX3X5cusQ4feVhXslalVYfuZvyPcpZ-ItoCOnlaF40EMc2wbwYxIMekxcMpKjitKEfpdZ0uM2EzokFjivO-NDKEW_fTdmoISuMRbBD2E81vMlZZt4MOnYuAE0SHPl5SofxAOemwvzg2g0VSe1CUg5RkANv-UXmFr3B1JwsWCDDH7q4FpNkaJE9tw"/>
+</div>
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwbEM-e9uoDy2QYAxtIKXs4p4S_q8f8-PabOYb3LmaQxBVfRcb8dPnIkfjFz0DxGNuZTBvCu7fVGI6y6IpFjFxij6wWcbsSyOwgJgVLjZKp81lWKw8Egtdz5k39eA2NhUuQOoRz-zvXnbQnuhdLt9DeIPy9FogB_yHeaVqASgQug4V1DebPTi10U4qaKrDPnZqC6rUNcqkTEfbab4GDv8aOfU6I08VTevFXnr7xWQOdnQP2LBHcaT1u_RhoyfAJmB5psNeRHTYR9PY"/>
+</div>
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACz3JXl1sAy4Cm-cDxYOLtInp66vI2BJsKfIW6QDJEZA4uEzthXjEwlZpodG6RSVIq4Aw_iNL-Rw7IxkVbwB4_iA73Jgny18Byno7p7042Uzil7pqiospoqhmkH2II8IGv8Vzn-MAs6SPV-wahJx6jSSA37bf572wxAolHCGDQYJw_sOwHHpHp1Wn4QxqLkYr00gVeQj0HJmj9cJu4GWewhoWC7LwdTvMGkVYoDPBRKfGyHN6mHTqdtq2vtQruqg54Li_HjWY3GUAk"/>
+</div>
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxaUaOoF7houKfO8QFoDGlMvULjDp7wAA6YSctW8pw0Ue9Sk32z81V1QHT-7xM4izjXpL7Xlt9QOgHNg_Eo0vy97eiTlJ5tbQjc2KXJE_WjX2EMcH1pTLY7zfofSwz_25PVizqzMyyVP0bUWEmAN5YzdJj3GIaxTyybNZpyjsze-8C8rja0mfp4TVwxk_82_o0gW1nKoYrX3IewUcHgNanJP3-30fgC7KsAP5Qfj7jf9aFkTKB5OQFWlNu0ZnvASb3ZQCoxNAgCTLL"/>
+</div>
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfUKB_Ink_aSiIN7ZXA4f2_RiUueHRkecGcBP6ToIdpu5BrBNJyTvQVo8QHUEzpx7S80RAitvSWsXwbQ8D1JpAy2d5OjBqFMJpa0zkjp7R90SraznSFduf1lDaMJEF9lwQ8EqxFAqIWNvGRZunBvKa7wfR6J0USzh4FaEFLybjKptfDJKPy6ipyUhgwX0Jg8-xorMNFZgr4XL5iPg8Vb_4xlMgEESMl_olFoK7lk2t2W-MPqs8jDixjTHXaBjniAEWmxQsGhFdF982"/>
+</div>
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnSmUMPFp6oz6PJGOov19HpBkurT7Pp9BB0JQjiqoRs5sHeWQrYBU2iZ_SfkNirCKGfI8Ied-45ct0PAxfhCXsGU856wh1RFxnXd7lpti_HwozZ6OioTX7Fmq9d5ihV2elunhnwFAAs64MXG6oXy95qhM2DoGS1fePNPLOWzpVdCC2cwLYewY0Y-og-hQxBgl-gT7Z5MT_alyhU5IFw5RNkeVjuXyDIF8-ixItCTEDv_qQI73jXdW1V0oYu7rqId65yyXbjKbk_hMY"/>
+</div>
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbsmBYiQ3hACltXEkcxp-1UoC7Yryemo92Qq0fRaTzuuqveUxS_gqad7N10DbWRCK6tGWiGi3P_o4Sq-5YO6WT9vqHBQTPODCUFpwfdGqKtdlCyV2WESWqIBZ9SOT-7xMbeT_1i46EbPTcSsu3oBElKpiBGRSSFkPAoginzY2B1bf1v7Isf1TxLu4Bc_NTG3eUv73_JjiUPtyq1RHUhtGVTgzA1gwC7wydC5bKmi_VOpDncILtmaXQIxcPTVpIpdStRkhREycEBuWa"/>
+</div>
+<div class="flex-none w-48 aspect-[2/3] bg-gray-900 rounded-md overflow-hidden poster-hover cursor-pointer">
+<img alt="Trending Movie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAR9ZVzHuCM7T1m0LdpCaBoT3zNaa67MYCNB-SASMxkkzmaVK5H8vszvg80W9VXvntjaG8fQo5WuFIgVhg8lstWEqPCMDWzlBt9C39g1cOp1EMCqfWodlYOJCzzuOsF9S7OKPn8n1b31IQJDQM3Dc0GA1D7rFdBgPM07QwuRylMMJWE5WkmeUtCYIKO3GdlX5RW-v6_bMl1XoXjebe6kOvdn4JUlgzlyArzu5VovNXBD4CQA7fTlIQo2zFJXKPNaxemeGgbbTnD2xO"/>
+</div>
+</div>
+</section>
+<!-- END: Trending Now -->
+<!-- BEGIN: Top Picks -->
+<section data-purpose="top-picks-row">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-semibold">Top Picks for You</h2>
+<button class="text-gray-400 hover:text-white text-sm">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Top Pick 1 -->
+<div class="flex gap-4 bg-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer border border-white/10">
+<img alt="Pick" class="w-24 h-32 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyIAo8mhJPRwHtgXLU_G1xKo0LzxhEa2HatE3uBECNg0Ef6l9NEDtoAovVrdGwiXjLnggqlr2xCUVI8EHib09mT8Hy6AGzasAYj7r0qIhBE7nQerd6FOHYkfMj2PKSpSi3ejlQqd_ziy6_DQVOmolhEebIxz5enre7gQrSQWIQd_l-dNkNQdCchKPRRlLt5LfzaiuuJrBqtJ7IOzMVvahz-o-NkwcjXowiYqfEViivegYPJnziHhDEDoGgKRVorrTIW3VMgjKumioo"/>
+<div class="flex flex-col justify-center">
+<h3 class="font-bold text-lg">Inception</h3>
+<p class="text-xs text-gray-400 mb-2">Sci-Fi • 2010 • 2h 28m</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<svg class="h-3 w-3 fill-current" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs font-semibold">98% Match</span>
+</div>
+</div>
+</div>
+<!-- Top Pick 2 -->
+<div class="flex gap-4 bg-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer border border-white/10">
+<img alt="Pick" class="w-24 h-32 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTrFq609G_nAR_c5y22s_W1pineQR8PJ8q7s6Hy4RGCK-5FxYkcDiL_8gUD3kcmVzk3j96PKNp4iyRr6VpkIqdPYD_20z-7iUB7QdfBYVffTOhaRFtsHAzyN7AX7sFSnDGXGQqicgVKVm7jcR84jjbh82S4Lw021QqpitEwGCZsRqe-oUSJEbVMBCOrXMQeudFkQpbuuwEt0GBMprYy80xwT7cZZU9ZXr7Ds4bLqRYh8aGJg7rw5UtbGSBEPJibmnAxnMr3lkTyj_v"/>
+<div class="flex flex-col justify-center">
+<h3 class="font-bold text-lg">The Matrix</h3>
+<p class="text-xs text-gray-400 mb-2">Sci-Fi • 1999 • 2h 16m</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<svg class="h-3 w-3 fill-current" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs font-semibold">95% Match</span>
+</div>
+</div>
+</div>
+<!-- Top Pick 3 -->
+<div class="flex gap-4 bg-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer border border-white/10">
+<img alt="Pick" class="w-24 h-32 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyyDLLK_L9b6oznoTmaOGsEfMQoVpjsYlfNAukmDVsEPg77dAu8aMmdTXMHRT2J9oofKvb5IAPJWrOEBG6QKJrqb-u-BSpdr8AeIhFf_DAd1w7v-WAKelEi8KT-A4jCzcVyuCTrWNjkL1nV5zw58XbjhB5wiEY1WvbxcrgcficdHnZNc9PpBH3FRSITdqEe1e1L5jDVeAbQ0KWdUd5q8Ad0MG2jJG-JFQgpIIGXiFnVppaxs25E_fo0nhgAEhEaSr-XjDfy4Vh1l60"/>
+<div class="flex flex-col justify-center">
+<h3 class="font-bold text-lg">Blade Runner 2049</h3>
+<p class="text-xs text-gray-400 mb-2">Sci-Fi • 2017 • 2h 44m</p>
+<div class="flex items-center gap-1 text-yellow-500">
+<svg class="h-3 w-3 fill-current" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<span class="text-xs font-semibold">92% Match</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Top Picks -->
+</div>
+<!-- BEGIN: Footer -->
+<footer class="px-12 py-10 border-t border-gray-800 text-gray-500 text-sm" data-purpose="site-footer">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+<ul class="space-y-2">
+<li><a class="hover:text-white" href="#">Help Center</a></li>
+<li><a class="hover:text-white" href="#">Account</a></li>
+<li><a class="hover:text-white" href="#">Media Center</a></li>
+</ul>
+<ul class="space-y-2">
+<li><a class="hover:text-white" href="#">Jobs</a></li>
+<li><a class="hover:text-white" href="#">Terms of Use</a></li>
+<li><a class="hover:text-white" href="#">Privacy</a></li>
+</ul>
+<ul class="space-y-2">
+<li><a class="hover:text-white" href="#">Cookie Preferences</a></li>
+<li><a class="hover:text-white" href="#">Corporate Information</a></li>
+<li><a class="hover:text-white" href="#">Contact Us</a></li>
+</ul>
+<div>
+<button class="border border-gray-600 px-4 py-2 hover:border-white hover:text-white transition-colors">
+            Service Code
+          </button>
+</div>
+</div>
+<p>© 2023 StreamVerse, Inc. All rights reserved.</p>
+</footer>
+<!-- END: Footer -->
+</main>
+<!-- BEGIN: Floating Navigation Bar (Mobile/Tablet specific if needed) -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 md:hidden bg-black/80 backdrop-blur-lg border border-white/20 px-6 py-3 rounded-full flex gap-8 z-50">
+<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<!-- END: Floating Navigation Bar -->
+</body></html>

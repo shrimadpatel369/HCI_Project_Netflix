@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Midnight Sky - Watch Now</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style data-purpose="custom-layout">
+    /* Custom scrollbar for a cleaner dark theme look */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #141414;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }
+
+    /* Background overlay to ensure text readability on movie still */
+    .hero-gradient {
+      background: linear-gradient(to right, #000 10%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%),
+                  linear-gradient(to top, #141414 5%, transparent 40%);
+    }
+  </style>
+<style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    body {
+      font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #141414;
+      color: #ffffff;
+    }
+    /* Netflix standard colors */
+    .text-gray-300 { color: #e5e5e5 !important; }
+    .text-gray-200 { color: #e5e5e5 !important; }
+    .text-gray-400 { color: #808080 !important; }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- BEGIN: Navigation -->
+<nav class="fixed top-0 w-full z-50 px-8 py-4 flex items-center justify-between bg-gradient-to-b from-black/80 to-transparent">
+<div class="flex items-center space-x-10">
+<a href="home.html">
+<img alt="Logo" class="h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeDwkEXQjkNW7U9ssDdl24N9O_OWuljnPje0uyb_A_obAn0MFUQSyPRHiN8UNVpMN4OxqwVHwdt7C02mNlDhvQqt-OJI2jpa2urXeuMtYcR1bBVXgL6nwW1_2Us8MBNSjOQujyDZmXUcLa3fQPo5_wah_TFKUrBdbqiJpLoxAMynVeSOWWBpIXU8Wm60pJOOC4kjT1owOIDF5ZCtWRdw90FGMMDlBwGUcuVJjHlnphtzqTJuNQtkNE-Sm7R2J6y_o6mfAS1WMb6utC"/>
+</a>
+<ul class="hidden md:flex space-x-4 text-sm font-medium">
+<li><a class="hover:text-gray-300 transition" href="home.html">Home</a></li>
+<li><a class="hover:text-gray-300 transition" href="#">TV Shows</a></li>
+<li><a class="hover:text-gray-300 transition" href="#">Movies</a></li>
+<li><a class="hover:text-gray-300 transition font-bold" href="#">New &amp; Popular</a></li>
+</ul>
+</div>
+<div class="flex items-center space-x-6">
+<i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+<i class="fa-solid fa-bell cursor-pointer"></i>
+<div class="w-8 h-8 bg-blue-600 rounded"></div>
+</div>
+</nav>
+<!-- END: Navigation -->
+<!-- BEGIN: HeroSection -->
+<main class="relative min-h-screen flex items-center pt-20">
+<!-- Cinematic Background Still -->
+<div class="absolute inset-0 z-0">
+<img alt="Background Scene" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxgeyhtKhC8B96pivqxrPuNcp7CdLEdUeN7tljURalW8AhAeUeOGU4v7cgiBpqOig2ZIl4Ub8pzwX8KvoLSyoAdfeN7zjtBHoBCJV7bJOYxi1A8ssBQdm9VK17EXnvfrYwWNzREHX5khH7bXRoqQjXdrpnJNLeV7ljSks24ACM3nxN8BWVRz-3iZ6BDdSAg6YHTweZNSlnGg12XSyqUJn4xt9MPFgamMUxMoEYp-OhuE56ST_OimUl4e07BuO1V1wJwj_N3XAa_zJk"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<!-- Content Container -->
+<div class="relative z-10 container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end pb-24">
+<!-- LEFT COLUMN: Movie Info -->
+<section class="lg:col-span-7 space-y-6" data-purpose="movie-details-primary">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight">THE MIDNIGHT SKY</h1>
+<div class="flex items-center space-x-4 text-lg font-semibold" style="color: #e5e5e5;">
+<span class="text-green-500">98% Match</span>
+<span>2020</span>
+<span class="border px-2 py-0.5 text-xs rounded" style="border-color: #808080; color: #e5e5e5;">PG-13</span>
+<span>1h 58m</span>
+<span class="border px-1 text-[10px] rounded" style="border-color: #808080; color: #e5e5e5;">4K</span>
+</div>
+<p class="text-lg md:text-xl max-w-2xl leading-relaxed" style="color: #e5e5e5;">
+          A lone scientist in the Arctic races to stop Sully and her fellow astronauts from returning home to a mysterious global catastrophe.
+        </p>
+<div class="flex items-center space-x-3 pt-4" data-purpose="call-to-action-buttons">
+<!-- Play Button (Direct Manipulation) -->
+<a href="playback.html" style="text-decoration: none;">
+<button class="bg-white text-black px-8 py-3 rounded flex items-center font-bold text-xl hover:bg-gray-200 transition">
+<i class="fa-solid fa-play mr-3"></i> Play
+          </button>
+</a>
+<!-- My List Button -->
+<button class="bg-gray-500/50 text-white px-6 py-3 rounded flex items-center font-bold text-xl hover:bg-gray-500/70 transition backdrop-blur-md">
+<i class="fa-solid fa-plus mr-3"></i> My List
+          </button>
+<!-- Like Button -->
+<button class="w-12 h-12 rounded-full border-2 border-gray-400 flex items-center justify-center hover:bg-gray-400/20 transition">
+<i class="fa-regular fa-thumbs-up"></i>
+</button>
+</div>
+</section>
+<!-- RIGHT COLUMN: Metadata and Cast -->
+<aside class="lg:col-span-5 space-y-8" data-purpose="movie-metadata">
+<div class="bg-black/40 backdrop-blur-md p-6 rounded-lg border border-white/10">
+<div class="mb-6">
+<h3 class="text-sm mb-2" style="color: #808080;">Cast:</h3>
+<p class="text-sm">George Clooney, Felicity Jones, David Oyelowo, Tiffany Boone, Demián Bichir, Kyle Chandler</p>
+</div>
+<div class="mb-6">
+<h3 class="text-sm mb-2" style="color: #808080;">Genres:</h3>
+<p class="text-sm">Sci-Fi Movies, Movies Based on Books, Dramas</p>
+</div>
+<div>
+<h3 class="text-sm mb-2" style="color: #808080;">This Movie is:</h3>
+<p class="text-sm">Understated, Emotional, Sci-Fi</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- END: HeroSection -->
+<!-- BEGIN: MoreLikeThis -->
+<section class="relative z-20 px-6 lg:px-12 py-16 bg-[#141414]" data-purpose="related-content-section">
+<h2 class="text-2xl font-bold mb-8">More Like This</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Related Movie 1 -->
+<div class="group relative cursor-pointer overflow-hidden rounded-md transition duration-300 hover:scale-105">
+<img alt="Gravity Movie Poster" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqFzrYo1x6ss0ulhKghvDpjPdqP5przzUElUmmNYZxhpx70-wmqXqdSaaGyxhCDeAfEGh4WAp-rac0pDxES3uZ56vUijLIbfqZnL6TLBm6v9aeaMXD-ugRUPfqYUSPaluxU0GtDy4oP6rEACca5tovzIpmyCoSWX7yjMn9K_2ZBTDzGnPvoyC0AymyhLFqS3dYlBgdLAU5JsBM286Y5lhcy4XpE4VpTIUuO5inWXUMiZnRls6U80ZdluRtK2QcD-nWALSlhz8iQAfP"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-sm font-bold">Gravity</p>
+<div class="flex space-x-2 mt-2">
+<i class="fa-solid fa-circle-play text-white"></i>
+<i class="fa-solid fa-circle-plus text-white"></i>
+</div>
+</div>
+</div>
+<!-- Related Movie 2 -->
+<div class="group relative cursor-pointer overflow-hidden rounded-md transition duration-300 hover:scale-105">
+<img alt="Interstellar Poster" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcjQAYnUP7hsgA8JTExh8pz7BmaBIXHDtDNYcD6IcA9xz-21wHnG7rTNfO2p7sj6w9AvFW0HVbAUJ7tBvdfQNaXWhx0svHmyAfWaDBBBLyMWSBY8pqG_T9k5DaEZEqeDvhQXecji4N0FyD0uOeMw0twFKsUVWFeWpO0boyehiz1pkCGths_tBMCQc0QnQfp-5E5LVfpMdj_ZdYdIW94wr_YvHx4WN8nXD8XhwUNdLgulVk0c33k52E51EsraG9H-Ppi_Yh6I4PazAC"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-sm font-bold">Interstellar</p>
+</div>
+</div>
+<!-- Related Movie 3 -->
+<div class="group relative cursor-pointer overflow-hidden rounded-md transition duration-300 hover:scale-105">
+<img alt="The Martian Poster" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4aZ0Fr0D9aEcyhvB2tDNSvu5w_ed8XO9HHnNHKAfrn2lmqCF9SxaMRmkWvdOweFV8s3Q3D_K-HV3wf25mqm_wWGWm4rUeQ1p1rbjxMiIFlXKxSJq14zs9O5jlwwL_GUIIKVQhgShdrDGtwnUklEHn99fZlRzkHsAga6LBd2lkPcZF9JQto-fJVZmUPGS1_nE0FEzaupi5TlbaqyO6tWIGk2gtzmERkS2przMTtPpuYzfsx6eaEtfKSBfaXFxKsSFAHTU7nL2WF9Td"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-sm font-bold">The Martian</p>
+</div>
+</div>
+<!-- Related Movie 4 -->
+<div class="group relative cursor-pointer overflow-hidden rounded-md transition duration-300 hover:scale-105">
+<img alt="Arrival Poster" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbpzPwdr-KnexVXnSsjhEDzLm5887fKkNJUBEvyvPdD5VwjOYKlo1xNrqUA_FRcK93XIg5fiAqcrjSn3ITtZu4SRupILMKJpQMaUfVsloRR80XKK8BfeYvw3y7ZeeApiGjvwD0vGhpDz3D3TOGLXVC1Xz8oijXUvRrVxWm_m-Fc_9X4TPwEpiALrOpa4KF_t_dz-5i1p4YDEe-hsXgtZ8bzz8O0TaPb72-kJHdcJ1IfPBcsr4-SLFlwF12Xplyvo4xxAB8PxbjpnJ0"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-sm font-bold">Arrival</p>
+</div>
+</div>
+<!-- Related Movie 5 -->
+<div class="group relative cursor-pointer overflow-hidden rounded-md transition duration-300 hover:scale-105">
+<img alt="Ad Astra Poster" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIIneuvqZ3lMPi80vSe8KSE-g0aRHVVKcV2AUZbuodoTGMyAvTgm1XsYYYkjkuP_i2QmzyUoYcq7D38N0S-K_2_uNI2djkBjaXRim_Uq81qW-t77_P-8jKttCCEb6ETS7tvMDXZQp8vnfEAUEHmRpqm3HgSDHzpB3Idj-JbuKwDqic2lT4GPs2gHgZ94GgO1UbnemanT3Eqzj4nPA0uqh71c8V5QmH2LVqf0v0Cs_rwBr1RxGZvS-kKdSA99nGF4PmJOiCRQIeshu_"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-sm font-bold">Ad Astra</p>
+</div>
+</div>
+<!-- Related Movie 6 -->
+<div class="group relative cursor-pointer overflow-hidden rounded-md transition duration-300 hover:scale-105">
+<img alt="Apollo 13 Poster" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQf1LyrjrAx2BF-q260lwN6VMxldMt0m8x9ppsJc2W78p-uNBn3M-NUt-JYW0y1uc1DH7KPI7w-PTs6_X4iq3ZyFhhMpbSCSgpt3LZOs5TFqgfSqRetbR_G6OfDo5teBCyZjoClXzmczofJ-LVt5obc9njJdAIBUC7ZvEN-SwKVo7SEg4yltu_9HsK0fbe2XqewbawoPLl93HkN9SDED3Rhu26-MlHdVuJdxS_y2FUIyaITIxeWI8_RNTp3qH3oVjBGVEVEEQxIDWe"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-sm font-bold">Apollo 13</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: MoreLikeThis -->
+<!-- BEGIN: Footer -->
+<footer class="px-6 lg:px-12 py-12 text-gray-500 text-sm max-w-5xl mx-auto" data-purpose="site-footer">
+<div class="flex space-x-6 mb-8 text-xl text-white">
+<i class="fa-brands fa-facebook-f cursor-pointer"></i>
+<i class="fa-brands fa-instagram cursor-pointer"></i>
+<i class="fa-brands fa-twitter cursor-pointer"></i>
+<i class="fa-brands fa-youtube cursor-pointer"></i>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<ul class="space-y-3">
+<li><a class="hover:underline" href="#">Audio Description</a></li>
+<li><a class="hover:underline" href="#">Investor Relations</a></li>
+<li><a class="hover:underline" href="#">Legal Notices</a></li>
+</ul>
+<ul class="space-y-3">
+<li><a class="hover:underline" href="#">Help Center</a></li>
+<li><a class="hover:underline" href="#">Jobs</a></li>
+<li><a class="hover:underline" href="#">Cookie Preferences</a></li>
+</ul>
+<ul class="space-y-3">
+<li><a class="hover:underline" href="#">Gift Cards</a></li>
+<li><a class="hover:underline" href="#">Terms of Use</a></li>
+<li><a class="hover:underline" href="#">Corporate Information</a></li>
+</ul>
+<ul class="space-y-3">
+<li><a class="hover:underline" href="#">Media Center</a></li>
+<li><a class="hover:underline" href="#">Privacy</a></li>
+<li><a class="hover:underline" href="#">Contact Us</a></li>
+</ul>
+</div>
+<button class="border border-gray-500 px-2 py-1 mb-4 hover:text-white">Service Code</button>
+<p>© 1997-2024 Netflix, Inc.</p>
+</footer>
+<!-- END: Footer -->
+</body></html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#E50914",
+                "background-light": "#ffffff",
+                "background-dark": "#000000",
+              },
+              fontFamily: {
+                "display": ["Public Sans"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }</script>
+<title>Account Settings - StreamVibe</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-40 backdrop-blur-md border-b border-primary/10 bg-black/80 dark:bg-black/80">
+<div class="max-w-2xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<a href="my-netflix.html">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-icons text-primary">arrow_back</span>
+</button>
+</a>
+<h1 class="text-xl font-bold tracking-tight">Account</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium uppercase tracking-wider opacity-60">ID: 8829-X</span>
+</div>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-4 py-8 space-y-8 pb-32">
+<!-- Membership & Billing Section -->
+<section class="space-y-4">
+<h2 class="text-sm font-semibold uppercase tracking-widest text-primary">Membership &amp; Billing</h2>
+<div class="bg-white rounded-xl border border-primary/10 p-6 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-sm opacity-60 mb-1">Current Plan</p>
+<h3 class="text-lg font-bold">Premium 4K + HDR</h3>
+<p class="text-xs text-primary mt-1 font-medium">Next billing date: October 24, 2023</p>
+</div>
+<span class="text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">Active</span>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all shadow-lg shadow-primary/20">
+                        Update Payment Method
+                    </button>
+<button class="w-full py-3 border border-primary/20 hover:bg-primary/5 text-primary font-semibold rounded-lg transition-all">
+                        Change Plan
+                    </button>
+</div>
+</div>
+</section>
+<!-- Profile & Parental Controls Section -->
+<section class="space-y-4">
+<h2 class="text-sm font-semibold uppercase tracking-widest text-primary">Profile &amp; Parental Controls</h2>
+<div class="divide-y bg-white rounded-xl border border-primary/10 overflow-hidden shadow-sm">
+<!-- Profile 1 -->
+<div class="p-4 flex items-center justify-between group cursor-pointer hover:bg-primary/5">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover border-2 border-primary/20" data-alt="User profile avatar of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbWoWyboFPg8o4-IuGXvBFBaFY98xonOlSEkAGO5II997MMNE2FxzQm3-FY8MJwUwqZoatOy1U4FbYHqNzFgynZdyigiT0k1sUP50mizPNqAClphugJfI7GaPfZP7ZhxjKNudSeqtk6JrYEo9HZaqrFZqTUjHrVcO7DGg6lPGI6T4kqMUNC_zwVQB-gkaWjPBWmUHcgubFmOW3R31AdvbZoxZHmM5XTe9GXfNiCQXN81tg0fvnHwdA7EC9rMrlXVPfk0yc1axcxTw"/>
+<div>
+<h4 class="font-bold">David (Admin)</h4>
+<p class="text-xs opacity-60">All Maturity Ratings</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-icons text-primary/40 group-hover:text-primary transition-colors">lock_open</span>
+<span class="material-icons text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- Profile 2 -->
+<div class="p-4 flex items-center justify-between group cursor-pointer hover:bg-primary/5">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover border-2 border-primary/20" data-alt="User profile avatar of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lj4Ie8nzKOJM4FDGOyRrI6mlFpoMS51bcdkQ9yLKUh4CuoJn3wo1Mtk5Bjy4FNclpWMv0qSkpLcaq-OxQzML6LHZm6A8BK59BwB7f1k3wFd55zbh25HPTHmi5CUidxkwugDCAX4FFKTSM9zbrZQdVlScTHJ_p-_kqAGfievjJy14r7GI3kEiKghwXrv1MJbezyXVd6hWAKsPBqnOP3yYYPXjF3eX84uRsmaSCroQGfbnRZ391_l_ZYP2ZdHlw18gfMv6QnCtxDs"/>
+<div>
+<h4 class="font-bold">Sarah</h4>
+<p class="text-xs opacity-60">Maturity Rating: TV-14</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-icons text-primary">lock</span>
+<span class="material-icons text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- Profile 3 (Kids) -->
+<div class="p-4 flex items-center justify-between group cursor-pointer hover:bg-primary/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center border-2 border-primary/20">
+<span class="material-icons text-white">face</span>
+</div>
+<div>
+<h4 class="font-bold">Kids</h4>
+<p class="text-xs opacity-60">Maturity Rating: TV-G</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-icons text-primary">lock</span>
+<span class="material-icons text-slate-400">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- App Settings Section -->
+<section class="space-y-4">
+<h2 class="text-sm font-semibold uppercase tracking-widest text-primary">App Settings</h2>
+<div class="bg-white rounded-xl border border-primary/10 overflow-hidden shadow-sm">
+<!-- Wi-Fi Only -->
+<div class="p-4 flex items-center justify-between border-b border-primary/10">
+<div>
+<h4 class="font-medium">Wi-Fi Only</h4>
+<p class="text-xs opacity-60">Limit data usage while streaming</p>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary">
+<span class="inline-block h-4 w-4 transform rounded-full bg-white transition translate-x-6"></span>
+</button>
+</div>
+<!-- Smart Downloads -->
+<div class="p-4 flex items-center justify-between border-b border-primary/10">
+<div>
+<h4 class="font-medium">Smart Downloads</h4>
+<p class="text-xs opacity-60">Download next episode automatically</p>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-400 dark:bg-slate-700">
+<span class="inline-block h-4 w-4 transform rounded-full bg-white transition translate-x-1"></span>
+</button>
+</div>
+<!-- Streaming Quality -->
+<div class="p-4 flex items-center justify-between">
+<div>
+<h4 class="font-medium">Streaming Quality</h4>
+<p class="text-xs opacity-60">Current: Automatic</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="text-sm font-bold uppercase tracking-tight">Auto</span>
+<span class="material-icons">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="pt-6 space-y-4">
+<button class="w-full py-4 text-center text-primary font-bold border-2 border-primary/30 rounded-xl hover:bg-primary/10 transition-colors">
+                Cancel Membership
+            </button>
+<button class="w-full py-4 text-center opacity-60 hover:opacity-100 font-medium transition-opacity">
+                Sign Out of All Devices
+            </button>
+</section>
+</main>
+<!-- Modal Overlay (Hidden by default, shown for demonstration in the prompt) -->
+<!-- Remove 'hidden' class to see the modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm hidden">
+<div class="w-full max-w-sm bg-white border border-primary/20 rounded-2xl shadow-2xl overflow-hidden">
+<div class="p-8 text-center space-y-4">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-icons text-primary text-3xl">warning</span>
+</div>
+<h3 class="text-xl font-bold">Cancel Membership?</h3>
+<p class="text-sm opacity-60">You will still have access until the end of your current billing period on October 24, 2023.</p>
+</div>
+<div class="flex flex-col border-t border-primary/10">
+<button class="w-full py-4 text-primary font-bold hover:bg-primary/5 transition-colors border-b border-primary/10">
+                    Keep Membership
+                </button>
+<button class="w-full py-4 text-slate-400 font-medium hover:bg-red-500/10 hover:text-red-500 transition-all">
+                    Finish Cancellation
+                </button>
+</div>
+</div>
+</div>
+<!-- Navigation Bar (Mobile Style) -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-background-light/95 backdrop-blur-md border-t border-primary/10 pb-6 pt-2 dark:bg-black/95">
+<div class="max-w-md mx-auto flex justify-around items-center">
+<button class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-icons">home</span>
+<span class="text-[10px] font-bold uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-icons">search</span>
+<span class="text-[10px] font-bold uppercase">Search</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-icons">file_download</span>
+<span class="text-[10px] font-bold uppercase">Downloads</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-icons">person</span>
+<span class="text-[10px] font-bold uppercase">Account</span>
+</button>
+</div>
+</nav>
+</body></html>

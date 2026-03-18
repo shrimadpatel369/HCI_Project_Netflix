@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who's Watching?</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at center, #141414, #000);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title */
+h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #e5e5e5;
+  margin-bottom: 60px;
+}
+
+/* Profiles Row */
+.profiles {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 60px;
+}
+
+/* Profile Card */
+.profile {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s;
+}
+
+.profile:hover {
+  transform: scale(1.1);
+}
+
+/* Avatar */
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 12px;
+  border: 3px solid transparent;
+  transition: all 0.25s;
+}
+
+.profile:hover .avatar {
+  border: 3px solid #fff;
+}
+
+/* Names */
+.name {
+  font-size: 14px;
+  color: #808080;
+  letter-spacing: 1px;
+}
+
+.profile:hover .name {
+  color: #fff;
+}
+
+/* Lock Icon */
+.lock {
+  font-size: 14px;
+  color: #808080;
+  margin-top: 6px;
+}
+
+/* Add Profile */
+.add {
+  background: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  color: #777;
+}
+
+.profile:hover .add {
+  background: #333;
+  color: #fff;
+}
+
+/* Button */
+.manage-btn {
+  padding: 12px 28px;
+  border: 1px solid #808080;
+  background: transparent;
+  color: #aaa;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.manage-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Sample Images (replace with your own if needed) */
+.rohan {
+  background-image: url('https://i.imgur.com/1X6fF9M.jpg');
+}
+
+.priya {
+  background-image: url('https://i.imgur.com/8Km9tLL.jpg');
+}
+
+.ajay {
+  background-image: url('https://i.imgur.com/4AiXzf8.jpg');
+}
+
+.kids {
+  background-image: url('https://i.imgur.com/2DhmtJ4.png');
+}
+</style>
+</head>
+
+<body>
+
+<h1>Who's watching?</h1>
+
+<div class="profiles">
+
+  <a href="home.html" style="text-decoration: none; color: inherit;">
+    <div class="profile" onclick="selectProfile('Rohan')">
+      <div class="avatar rohan"></div>
+      <div class="name">ROHAN</div>
+      <div class="lock">🔒</div>
+    </div>
+  </a>
+
+  <a href="home.html" style="text-decoration: none; color: inherit;">
+    <div class="profile" onclick="selectProfile('Priya')">
+      <div class="avatar priya"></div>
+      <div class="name">PRIYA</div>
+      <div class="lock">🔒</div>
+    </div>
+  </a>
+
+  <a href="home.html" style="text-decoration: none; color: inherit;">
+    <div class="profile" onclick="selectProfile('Ajay')">
+      <div class="avatar ajay"></div>
+      <div class="name">AJAY</div>
+      <div class="lock">🔒</div>
+    </div>
+  </a>
+
+  <a href="home.html" style="text-decoration: none; color: inherit;">
+    <div class="profile" onclick="selectProfile('Kids')">
+      <div class="avatar kids"></div>
+      <div class="add">＋</div>
+    </div>
+  </a>
+
+  <div class="profile" onclick="addProfile()">
+    <div class="avatar add">+</div>
+    <div class="name">Add Profile</div>
+  </div>
+
+</div>
+
+<button class="manage-btn" onclick="manageProfiles()">Manage Profiles</button>
+
+<script>
+function selectProfile(name) {
+  alert("Selected profile: " + name);
+}
+
+function addProfile() {
+  alert("Add Profile clicked");
+}
+
+function manageProfiles() {
+  alert("Manage Profiles clicked");
+}
+</script>
+
+</body>
+</html>
