@@ -6,10 +6,8 @@ A fully interactive and clickable Netflix UI prototype developed as part of an H
 
 ## 📋 Project Overview
 
-**Project Type**: HCI University Project - UI/UX Prototype  
-**Application**: Netflix Streaming Service  
-**Status**: ✅ Complete & Production-Ready  
-**Design Rating**: 9.2/10 ⭐  
+**Project Type**: HCI Project
+**Application**: Netflix Streaming Service
 **Last Updated**: March 18, 2026
 
 ### Features
@@ -371,13 +369,6 @@ index.html (Profile Selection)
 - **Cards**: Hover to see additional options, click to navigate
 - **Buttons**: All buttons with underlines are clickable
 - **Text Links**: Blue underlined text navigates to new pages
-
-### Supported Browsers
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
 ---
 
 ## 📊 Technical Stack
@@ -399,8 +390,6 @@ index.html (Profile Selection)
 ```
 HCI Project/
 ├── README.md                    (This file)
-├── DESIGN_REVIEW.md            (Design analysis)
-├── QUICK_FIXES.md              (Implementation notes)
 ├── index.html                  (Profile Selection)
 ├── home.html                   (Home/Discover)
 ├── search.html                 (Search & Explore)
@@ -473,22 +462,6 @@ HCI Project/
 
 ---
 
-## 📈 Design Metrics
-
-**Overall Design Rating**: 9.2/10 ⭐
-
-| Aspect | Score | Notes |
-|--------|-------|-------|
-| Color Accuracy | 9.8/10 | Netflix brand colors implemented correctly |
-| Typography | 9.0/10 | Professional fonts with good hierarchy |
-| Navigation | 10/10 | All links functional and intuitive |
-| Responsiveness | 8.5/10 | Modern layouts with good mobile support |
-| User Experience | 9.0/10 | Smooth transitions and clear navigation |
-| Accessibility | 8.8/10 | Good contrast and semantic markup |
-| **Overall** | **9.2/10** | **Production-Ready** |
-
----
-
 ## 🔍 Quality Checklist
 
 ✅ All pages load without errors  
@@ -503,53 +476,3 @@ HCI Project/
 ✅ Clean, maintainable code  
 
 ---
-
-## 📝 Notes for Evaluators
-
-### Design Decisions
-This prototype demonstrates key HCI principles:
-- **User-Centered Design**: Interface optimized for content discovery
-- **Visual Hierarchy**: Clear primary, secondary, and tertiary elements
-- **Consistency**: Unified design language across all pages
-- **Accessibility**: Proper contrast and semantic structure
-- **Feedback**: Hover states and transitions provide user feedback
-
-### Learning Outcomes
-- Understanding of modern UI/UX best practices
-- Netflix design system implementation
-- Responsive web design techniques
-- User flow mapping and navigation design
-- Color theory and typography principles
-- Interactive prototype development
-
----
-
-## 🎓 Project Information
-
-**Course**: HCI and UI/UX Design  
-**Project Duration**: [Timeline]  
-**Submission Date**: March 18, 2026  
-**Team Size**: 4 developers  
-**Final Status**: ✅ Complete and Tested  
-
----
-
-## 📞 Support & Questions
-
-For questions about specific screens or implementation details, refer to:
-- **Design Review**: See `DESIGN_REVIEW.md` for detailed analysis
-- **Implementation Notes**: See `QUICK_FIXES.md` for technical notes
-- **Team Members**: Contact relevant team member for screen-specific questions
-
----
-
-## 📄 License
-
-This is an educational prototype created for HCI university project purposes. All Netflix assets and trademarks are used for educational demonstration only.
-
----
-
-**Last Updated**: March 18, 2026  
-**Version**: 1.0 - Final Release  
-**Status**: ✅ Production Ready
-
