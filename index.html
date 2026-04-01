@@ -141,7 +141,7 @@ h1 {
 <div class="profiles">
 
   <a href="home.html" style="text-decoration: none; color: inherit;">
-    <div class="profile" onclick="selectProfile('Rohan')">
+    <div class="profile" >
       <div class="avatar rohan"></div>
       <div class="name">ROHAN</div>
       <div class="lock">🔒</div>
@@ -149,7 +149,7 @@ h1 {
   </a>
 
   <a href="home.html" style="text-decoration: none; color: inherit;">
-    <div class="profile" onclick="selectProfile('Priya')">
+    <div class="profile" >
       <div class="avatar priya"></div>
       <div class="name">PRIYA</div>
       <div class="lock">🔒</div>
@@ -157,7 +157,7 @@ h1 {
   </a>
 
   <a href="home.html" style="text-decoration: none; color: inherit;">
-    <div class="profile" onclick="selectProfile('Ajay')">
+    <div class="profile" >
       <div class="avatar ajay"></div>
       <div class="name">AJAY</div>
       <div class="lock">🔒</div>
@@ -165,33 +165,27 @@ h1 {
   </a>
 
   <a href="kids-mode.html" style="text-decoration: none; color: inherit;">
-    <div class="profile" onclick="selectProfile('Kids')">
+    <div class="profile" >
       <div class="avatar kids"></div>
       <div class="add">＋</div>
     </div>
   </a>
 
-  <div class="profile" onclick="addProfile()">
+  <div class="profile" >
     <div class="avatar add">+</div>
     <div class="name">Add Profile</div>
   </div>
 
 </div>
 
-<button class="manage-btn" onclick="manageProfiles()">Manage Profiles</button>
+<button class="manage-btn" >Manage Profiles</button>
 
 <script>
-function selectProfile(name) {
-  alert("Selected profile: " + name);
-}
 
-function addProfile() {
-  alert("Add Profile clicked");
-}
 
-function manageProfiles() {
-  alert("Manage Profiles clicked");
-}
+
+
+
 </script>
 
 </body>
