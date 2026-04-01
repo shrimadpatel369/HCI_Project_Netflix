@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Party</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #E50914;
+      --red-dark: #b20710;
+      --bg: #0a0a0a;
+      --surface: rgba(30, 30, 30, 0.85);
+      --muted: #8c8c8c;
+      --white: #fff;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .wp-root {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .wp-bg {
+      position: fixed;
+      inset: 0;
+      background: #000 url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxgeyhtKhC8B96pivqxrPuNcp7CdLEdUeN7tljURalW8AhAeUeOGU4v7cgiBpqOig2ZIl4Ub8pzwX8KvoLSyoAdfeN7zjtBHoBCJV7bJOYxi1A8ssBQdm9VK17EXnvfrYwWNzREHX5khH7bXRoqQjXdrpnJNLeV7ljSks24ACM3nxN8BWVRz-3iZ6BDdSAg6YHTweZNSlnGg12XSyqUJn4xt9MPFgamMUxMoEYp-OhuE56ST_OimUl4e07BuO1V1wJwj_N3XAa_zJk") center/cover no-repeat;
+      filter: blur(12px) brightness(0.45);
+      transform: scale(1.05);
+      z-index: 0;
+    }
+    .wp-top {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 16px 24px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent);
+    }
+    .wp-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .wp-brand svg { flex-shrink: 0; }
+    .wp-brand span {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--red);
+    }
+    .wp-top-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .wp-top-right button {
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wp-top-right button:hover { background: rgba(255,255,255,0.08); }
+    .wp-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 2px solid var(--red);
+      cursor: pointer;
+    }
+    .wp-main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: stretch;
+      padding: 0 0 0 16px;
+      min-height: 0;
+    }
+    .wp-sidebar {
+      width: 100%;
+      max-width: 420px;
+      min-height: calc(100vh - 72px);
+      margin: 0 16px 16px 0;
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.5);
+    }
+    .wp-side-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 18px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .wp-side-head h2 {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--red);
+    }
+    .wp-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .wp-close:hover { background: rgba(255,255,255,0.1); }
+    .wp-participants {
+      padding: 0 18px 16px;
+    }
+    .wp-part-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .wp-part-row label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .wp-pill {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      background: rgba(229, 9, 20, 0.15);
+      border: 1px solid rgba(229, 9, 20, 0.35);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .wp-avatar-stack {
+      display: flex;
+      align-items: center;
+      padding-left: 4px;
+    }
+    .wp-avatar-stack img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #1e1e1e;
+      margin-left: -12px;
+    }
+    .wp-avatar-stack .more {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #3a3a3a;
+      border: 2px solid #1e1e1e;
+      margin-left: -12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .wp-invite {
+      margin: 0 18px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: calc(100% - 36px);
+      padding: 14px 18px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .wp-invite:hover { background: var(--red-dark); }
+    .wp-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 8px;
+    }
+    .wp-tab {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 12px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      position: relative;
+    }
+    .wp-tab.active {
+      color: var(--white);
+    }
+    .wp-tab.active::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 60%;
+      background: var(--red);
+      border-radius: 2px 0 0 2px;
+    }
+    .wp-chat {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 200px;
+    }
+    .wp-msg-in .wp-name {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      color: var(--red);
+    }
+    .wp-msg-in.wp-alt .wp-name { color: var(--muted); }
+    .wp-msg-in .wp-time {
+      font-size: 10px;
+      color: var(--muted);
+      margin-left: 8px;
+      font-weight: 600;
+    }
+    .wp-bubble-in {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #e5e5e5;
+      max-width: 95%;
+    }
+    .wp-system {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding: 8px 0;
+    }
+    .wp-msg-out {
+      align-self: flex-end;
+      max-width: 88%;
+    }
+    .wp-msg-out .wp-you {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-align: right;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+    .wp-bubble-out {
+      background: var(--red);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .wp-settings {
+      display: none;
+      padding: 24px 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .wp-settings.active { display: block; }
+    .wp-chat-panel.hidden { display: none; }
+    .wp-input-wrap {
+      padding: 12px 18px 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .wp-input-inner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .wp-input-inner input {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 14px;
+      outline: none;
+    }
+    .wp-input-inner input::placeholder { color: #666; }
+    .wp-send {
+      background: none;
+      border: none;
+      color: var(--red);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      font-size: 18px;
+    }
+    .wp-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 24px 24px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+    }
+    .wp-footer a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      margin-left: 16px;
+    }
+    .wp-footer a:hover { color: rgba(255,255,255,0.7); }
+    @media (max-width: 768px) {
+      .wp-main { padding: 0; }
+      .wp-sidebar { margin: 0 8px 8px; max-width: none; border-radius: 12px 12px 0 0; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wp-root">
+    <div class="wp-bg" aria-hidden="true"></div>
+
+    <header class="wp-top">
+      <a class="wp-brand" href="playback.html" title="Back to player">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2" stroke="#E50914" stroke-width="2"/>
+          <path d="M6 8h4M14 8h4M6 12h12M6 16h8" stroke="#E50914" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>WATCH PARTY</span>
+      </a>
+      <div class="wp-top-right">
+        <button type="button" aria-label="Search">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="account.html">
+          <img class="wp-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI-aockucc4guLyjKVXcHaNL6yQJ2uzxDHggUcoKUBM5QjstH1JgFGjbMXXWOjMMDjmZRJlv9EkmtciVngpUcg5AzgYThDm0pSnRfBsBOEVzBkPN388i3QBi9jYjWvajwEABhXxeuABGvfsWO7iu6q6oCt1gQS-KYqHc4i2xvKVkvmFvkncK-LddOcW6-5hjfRJovNnoSDqLEZME-_HEW8V5otBmvnrgl0lKauKS8yZY3YaKYIAJx3Spmm5IXVqDvx2q9xrb5HY34" alt="Profile"/>
+        </a>
+      </div>
+    </header>
+
+    <div class="wp-main">
+      <aside class="wp-sidebar" aria-label="Party lobby">
+        <div class="wp-side-head">
+          <h2>PARTY LOBBY</h2>
+          <a class="wp-close" href="playback.html" aria-label="Close watch party">×</a>
+        </div>
+
+        <div class="wp-participants">
+          <div class="wp-part-row">
+            <label>PARTICIPANTS</label>
+            <span class="wp-pill">5 Online</span>
+          </div>
+          <div class="wp-avatar-stack">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbWoWyboFPg8o4-IuGXvBFBaFY98xonOlSEkAGO5II997MMNE2FxzQm3-FY8MJwUwqZoatOy1U4FbYHqNzFgynZdyigiT0k1sUP50mizPNqAClphugJfI7GaPfZP7ZhxjKNudSeqtk6JrYEo9HZaqrFZqTUjHrVcO7DGg6lPGI6T4kqMUNC_zwVQB-gkaWjPBWmUHcgubFmOW3R31AdvbZoxZHmM5XTe9GXfNiCQXN81tg0fvnHwdA7EC9rMrlXVPfk0yc1axcxTw" alt="">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lj4Ie8nzKOJM4FDGOyRrI6mlFpoMS51bcdkQ9yLKUh4CuoJn3wo1Mtk5Bjy4FNclpWMv0qSkpLcaq-OxQzML6LHZm6A8BK59BwB7f1k3wFd55zbh25HPTHmi5CUidxkwugDCAX4FFKTSM9zbrZQdVlScTHJ_p-_kqAGfievjJy14r7GI3kEiKghwXrv1MJbezyXVd6hWAKsPBqnOP3yYYPXjF3eX84uRsmaSCroQGfbnRZ391_l_ZYP2ZdHlw18gfMv6QnCtxDs" alt="">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKQw1Zz2kWx22IDegq98IDVKFhpHmau7d7oNKy3gU6WFz1WOAe2NZBl8QUfUWggYiCQg-9leFK4-hDAK44YOFor7IkMAtptQssCHa0bOks4JnR3dCzymYLCibYJ6eNSiD1rSQTUFFRySxskO4SYZsAdn72nNb8b8Mor8EYC5cHHoMAHGupzOsp0813vOMC6JeNikyitjB7GeR9XVN7JwJ1HQw45jB7eMTlKt5DnsjLJlpcAvRC0UpTWtx4ijBl84Fd9dcBwUSbHqeb" alt="">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuALogDp5pmxUNfd1x_cVRSP3bjnUtGDHhls1myc7RJ_LbXumTy8V2bItrykrwIKrakj-5zrIz4s-uV58jwr-og83eI9wZXtEuUIxkhBZqa-_ioE11oFBJONPeSgx5Gjr0ZX-Zcjm_Y7wfwd4hqJnwKYoIYgSZSsMg34bQuHBqzFpydufT_IFsDW4smpUHrloWrzeSNz2WpPG8ThRg4L15o1DNiPjmA5dUiXFMwsg2MCKfDs26u-u-fgl9CiSHarEOhG7oH9HWkmgtw" alt="">
+            <span class="more">+1</span>
+          </div>
+        </div>
+
+        <button type="button" class="wp-invite" id="copyInvite">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copy Invite Link
+        </button>
+
+        <div class="wp-tabs" role="tablist">
+          <button type="button" class="wp-tab active" role="tab" aria-selected="true" data-tab="chat" id="tab-chat">
+            <span>💬</span> LIVE CHAT
+          </button>
+          <button type="button" class="wp-tab" role="tab" aria-selected="false" data-tab="settings" id="tab-settings">
+            <span>⚙</span> SETTINGS
+          </button>
+        </div>
+
+        <div class="wp-chat wp-chat-panel" id="panel-chat" role="tabpanel">
+          <div class="wp-msg-in">
+            <div><span class="wp-name">MARCUS V.</span><span class="wp-time">21:44</span></div>
+            <div class="wp-bubble-in">That transition was incredible! 🍿</div>
+          </div>
+          <div class="wp-msg-in wp-alt">
+            <div><span class="wp-name">SARAH JANE</span><span class="wp-time">21:45</span></div>
+            <div class="wp-bubble-in">Watch out for the person in the background!</div>
+          </div>
+          <div class="wp-system">ALEX JOINED THE PARTY</div>
+          <div class="wp-msg-out">
+            <div class="wp-you">YOU <span class="wp-time">21:46</span></div>
+            <div class="wp-bubble-out">I didn't see that coming at all...</div>
+          </div>
+        </div>
+
+        <div class="wp-settings" id="panel-settings" hidden>
+          <p><strong style="color:#e5e5e5;">Party settings</strong></p>
+          <p style="margin-top:12px;">Only the host can change playback. Mute notifications or leave the party from here in a full implementation.</p>
+        </div>
+
+        <div class="wp-input-wrap" id="chat-input-wrap">
+          <div class="wp-input-inner">
+            <input type="text" placeholder="Send a message..." aria-label="Chat message" id="chatInput">
+            <button type="button" class="wp-send" aria-label="Send" id="sendBtn">➤</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="wp-footer">
+      <span>© 2024 Cinematic Stage. All Rights Reserved.</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Help Center</a>
+        <a href="#">Terms</a>
+      </span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      document.getElementById('copyInvite').addEventListener('click', function () {
+        var btn = this;
+        var url = window.location.href;
+        var orig = btn.innerHTML;
+        function flash() {
+          btn.innerHTML = '<span style="font-weight:800">Copied!</span>';
+          setTimeout(function () { btn.innerHTML = orig; }, 2000);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(flash).catch(function () { prompt('Copy this invite link:', url); });
+        } else {
+          prompt('Copy this invite link:', url);
+        }
+      });
+
+      var tabs = document.querySelectorAll('.wp-tab');
+      var chatPanel = document.getElementById('panel-chat');
+      var settingsPanel = document.getElementById('panel-settings');
+      var inputWrap = document.getElementById('chat-input-wrap');
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var name = this.getAttribute('data-tab');
+          tabs.forEach(function (t) {
+            t.classList.toggle('active', t === tab);
+            t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+          });
+          if (name === 'chat') {
+            chatPanel.classList.remove('hidden');
+            settingsPanel.classList.remove('active');
+            settingsPanel.hidden = true;
+            inputWrap.style.display = '';
+          } else {
+            chatPanel.classList.add('hidden');
+            settingsPanel.classList.add('active');
+            settingsPanel.hidden = false;
+            inputWrap.style.display = 'none';
+          }
+        });
+      });
+
+      document.getElementById('sendBtn').addEventListener('click', function () {
+        var input = document.getElementById('chatInput');
+        if (!input.value.trim()) return;
+        input.value = '';
+      });
+    })();
+  </script>
+</body>
+</html>

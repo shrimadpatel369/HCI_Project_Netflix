@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audio &amp; Subtitles</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.page-header a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.page-header a:hover { text-decoration: underline; }
+
+.page-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.panel-wrap {
+  flex: 1;
+  padding: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  background: #2b2b2b;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 360px;
+}
+
+@media (max-width: 640px) {
+  .panel { flex-direction: column; }
+}
+
+.column {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 70vh;
+  padding-right: 8px;
+}
+
+.column::-webkit-scrollbar { width: 6px; }
+.column::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+
+.title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #e5e5e5;
+}
+
+.item {
+  padding: 10px 0;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.item:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+
+.selected {
+  color: #fff;
+  font-weight: 600;
+}
+
+.selected::before {
+  content: "✔ ";
+  color: #E50914;
+}
+
+.divider {
+  border-top: 1px solid #555;
+  margin: 12px 0;
+}
+
+.hint {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  padding: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="page-header">
+  <a href="playback.html">← Back to player</a>
+  <h1>Audio &amp; Subtitles</h1>
+</header>
+
+<div class="panel-wrap">
+  <div class="panel" id="panel">
+
+    <div class="column">
+      <div class="title">Audio</div>
+
+      <div class="item selected">English (United States) [Original]</div>
+      <div class="item">English (United Kingdom) - Audio Description</div>
+
+      <div class="divider"></div>
+
+      <div class="item">French</div>
+      <div class="item">Polish</div>
+      <div class="item">Spanish</div>
+    </div>
+
+    <div class="column">
+      <div class="title">Subtitles</div>
+
+      <div class="item selected">Off</div>
+      <div class="item">English</div>
+      <div class="item">English (CC)</div>
+
+      <div class="divider"></div>
+
+      <div class="item">Arabic</div>
+      <div class="item">Chinese (Simplified)</div>
+      <div class="item">Chinese (Traditional)</div>
+      <div class="item">Croatian</div>
+      <div class="item">Czech</div>
+      <div class="item">Danish</div>
+      <div class="item">Dutch</div>
+      <div class="item">Filipino</div>
+    </div>
+
+  </div>
+  <p class="hint">Selections apply to this title only.</p>
+</div>
+
+<script>
+document.querySelectorAll('.item').forEach(item => {
+  item.addEventListener('click', () => {
+    const parent = item.parentElement;
+    parent.querySelectorAll('.item').forEach(i => i.classList.remove('selected'));
+    item.classList.add('selected');
+  });
+});
+</script>
+
+</body>
+</html>

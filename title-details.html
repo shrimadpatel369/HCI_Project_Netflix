@@ -58,8 +58,13 @@
 </ul>
 </div>
 <div class="flex items-center space-x-6">
+<a class="hidden sm:inline text-sm font-semibold hover:text-gray-300 transition" href="continue-watching.html">Continue</a>
+<a class="hidden sm:inline text-sm font-semibold hover:text-gray-300 transition" href="fast-laughs.html">Laughs</a>
+<a class="hidden sm:inline text-sm font-semibold hover:text-gray-300 transition" href="kids-mode.html">Kids</a>
 <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
-<i class="fa-solid fa-bell cursor-pointer"></i>
+<button type="button" aria-label="Notifications" class="cursor-pointer" onclick="toggleNotifications()">
+  <i class="fa-solid fa-bell"></i>
+</button>
 <div class="w-8 h-8 bg-blue-600 rounded"></div>
 </div>
 </nav>
@@ -88,7 +93,7 @@
         </p>
 <div class="flex items-center space-x-3 pt-4" data-purpose="call-to-action-buttons">
 <!-- Play Button (Direct Manipulation) -->
-<a href="playback.html" style="text-decoration: none;">
+<a href="playback.html" style="text-decoration: none;" title="Watch (opens player)">
 <button class="bg-white text-black px-8 py-3 rounded flex items-center font-bold text-xl hover:bg-gray-200 transition">
 <i class="fa-solid fa-play mr-3"></i> Play
           </button>
@@ -101,6 +106,9 @@
 <button class="w-12 h-12 rounded-full border-2 border-gray-400 flex items-center justify-center hover:bg-gray-400/20 transition">
 <i class="fa-regular fa-thumbs-up"></i>
 </button>
+<a href="watch-party.html" class="bg-gray-500/50 text-white px-5 py-3 rounded flex items-center font-bold text-base hover:bg-gray-500/70 transition backdrop-blur-md border border-white/10 no-underline" style="color: #e5e5e5;">
+<i class="fa-solid fa-users mr-2"></i> Watch Party
+</a>
 </div>
 </section>
 <!-- RIGHT COLUMN: Metadata and Cast -->
@@ -210,4 +218,69 @@
 <p>© 1997-2024 Netflix, Inc.</p>
 </footer>
 <!-- END: Footer -->
+
+<!-- Notifications overlay -->
+<div id="notifBackdrop" class="fixed inset-0 bg-black/60 backdrop-blur-[2px] z-[60] opacity-0 pointer-events-none transition-opacity" onclick="closeNotifications()"></div>
+<div id="notifPanel" class="fixed top-20 right-6 md:right-12 w-[min(420px,calc(100vw-32px))] max-h-[70vh] overflow-auto bg-black/90 border border-white/15 rounded-xl shadow-2xl z-[61] opacity-0 -translate-y-1 pointer-events-none transition-all">
+  <div class="px-4 py-3 flex items-center justify-between border-b border-white/10">
+    <div class="text-sm font-bold tracking-wide">Notifications</div>
+    <button class="px-2 py-1 rounded-lg text-gray-300 hover:bg-white/10" aria-label="Close notifications" onclick="closeNotifications()">✕</button>
+  </div>
+  <div class="divide-y divide-white/5">
+    <div class="px-4 py-4 flex gap-3">
+      <div class="mt-1 w-2 h-2 rounded-full" style="background:#E50914;"></div>
+      <div class="min-w-0 flex-1">
+        <div class="flex justify-between gap-3 mb-1">
+          <div class="text-[11px] font-extrabold uppercase tracking-[0.2em]" style="color:#E50914;">New Release</div>
+          <div class="text-[11px] text-gray-400 whitespace-nowrap">2h ago</div>
+        </div>
+        <div class="text-sm text-gray-200">New Episode of <b>The Witcher</b> is out. Continue watching now.</div>
+      </div>
+    </div>
+    <div class="px-4 py-4 flex gap-3">
+      <div class="mt-1 w-2 h-2 rounded-full bg-yellow-400"></div>
+      <div class="min-w-0 flex-1">
+        <div class="flex justify-between gap-3 mb-1">
+          <div class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-yellow-300">For You</div>
+          <div class="text-[11px] text-gray-400 whitespace-nowrap">Yesterday</div>
+        </div>
+        <div class="text-sm text-gray-200">Because you watched <b>Interstellar</b>, we recommend <b>The Midnight Sky</b>.</div>
+      </div>
+    </div>
+    <div class="px-4 py-4 flex gap-3 opacity-90">
+      <div class="mt-1 w-2 h-2 rounded-full bg-gray-500"></div>
+      <div class="min-w-0 flex-1">
+        <div class="flex justify-between gap-3 mb-1">
+          <div class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gray-300">Account</div>
+          <div class="text-[11px] text-gray-400 whitespace-nowrap">3d ago</div>
+        </div>
+        <div class="text-sm text-gray-200">Your subscription billing was successful.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleNotifications() {
+    const backdrop = document.getElementById('notifBackdrop');
+    const panel = document.getElementById('notifPanel');
+    const open = backdrop.classList.contains('opacity-100');
+    if (open) return closeNotifications();
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    backdrop.classList.add('opacity-100');
+    panel.classList.remove('opacity-0', '-translate-y-1', 'pointer-events-none');
+    panel.classList.add('opacity-100', 'translate-y-0');
+  }
+  function closeNotifications() {
+    const backdrop = document.getElementById('notifBackdrop');
+    const panel = document.getElementById('notifPanel');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+    backdrop.classList.remove('opacity-100');
+    panel.classList.add('opacity-0', '-translate-y-1', 'pointer-events-none');
+    panel.classList.remove('opacity-100', 'translate-y-0');
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNotifications();
+  });
+</script>
 </body></html>

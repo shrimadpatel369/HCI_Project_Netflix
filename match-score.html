@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match Stats - Netflix Theme</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  background: #141414;
+  color: #e5e5e5;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(180deg, #e50914, #8b0000);
+  padding: 20px;
+  text-align: center;
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team {
+  width: 30%;
+  font-size: 16px;
+}
+
+.score {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.status {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background: #1f1f1f;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+}
+
+.tab {
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tab.active {
+  color: white;
+  border-bottom: 2px solid #e50914;
+  padding-bottom: 4px;
+}
+
+/* CARD */
+.card {
+  background: #1f1f1f;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* PITCH */
+.pitch {
+  width: 100%;
+  height: 220px;
+  background: #111;
+  border-radius: 8px;
+  position: relative;
+  border: 1px solid #333;
+}
+
+/* Center line */
+.pitch::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #333;
+}
+
+/* Dots */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.blue { background: #4aa3ff; }
+.red { background: #e50914; }
+
+/* STATS */
+.stat {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.stat span {
+  width: 40px;
+  text-align: center;
+}
+
+/* BAR */
+.bar {
+  flex: 1;
+  height: 8px;
+  background: #333;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar-inner-left {
+  height: 100%;
+  background: #4aa3ff;
+}
+
+.bar-inner-right {
+  height: 100%;
+  background: #e50914;
+}
+
+/* LABEL */
+.label {
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.nav-back {
+  background: #141414;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+}
+.nav-back a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 20px;
+  display: inline-block;
+}
+.nav-back a:hover { color: #fff; text-decoration: underline; }
+</style>
+</head>
+
+<body>
+
+<nav class="nav-back">
+  <a href="home.html">← Back to Home</a>
+</nav>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="teams">
+    <div class="team">Liverpool</div>
+    <div class="score">2 - 1</div>
+    <div class="team">Chelsea</div>
+  </div>
+  <div class="status">Full Time</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active">Stats</div>
+  <div class="tab">Events</div>
+  <div class="tab">Lineups</div>
+  <div class="tab">Table</div>
+</div>
+
+<!-- SHOT MAP -->
+<div class="card">
+  <div class="pitch">
+
+    <!-- Left team -->
+    <div class="dot blue" style="top:40%; left:20%"></div>
+    <div class="dot blue" style="top:60%; left:25%"></div>
+
+    <!-- Right team -->
+    <div class="dot red" style="top:30%; right:20%"></div>
+    <div class="dot red" style="top:70%; right:25%"></div>
+
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="card">
+
+  <div class="label">Possession</div>
+  <div class="stat">
+    <span>55%</span>
+    <div class="bar">
+      <div class="bar-inner-left" style="width:55%"></div>
+    </div>
+    <span>45%</span>
+  </div>
+
+  <div class="label">Shots on Target</div>
+  <div class="stat">
+    <span>7</span>
+    <div class="bar">
+      <div class="bar-inner-left" style="width:70%"></div>
+    </div>
+    <span>3</span>
+  </div>
+
+  <div class="label">Fouls</div>
+  <div class="stat">
+    <span>5</span>
+    <div class="bar">
+      <div class="bar-inner-left" style="width:50%"></div>
+    </div>
+    <span>5</span>
+  </div>
+
+</div>
+
+</body>
+</html>

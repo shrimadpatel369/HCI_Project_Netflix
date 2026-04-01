@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kids Mode - Cinematic Play</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#5e3f3b",
+                        "on-surface-variant": "#e9bcb6",
+                        "surface-tint": "#ffb4aa",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#c0000c",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "on-primary": "#690003",
+                        "outline": "#af8782",
+                        "tertiary-fixed-dim": "#a7c8ff",
+                        "on-tertiary-container": "#f8f9ff",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container": "#201f1f",
+                        "primary-fixed": "#ffdad5",
+                        "tertiary": "#a7c8ff",
+                        "on-error": "#690005",
+                        "secondary": "#ffb4aa",
+                        "on-tertiary": "#003061",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#e50914",
+                        "secondary-fixed": "#ffdad5",
+                        "on-primary-container": "#fff7f6",
+                        "on-secondary-container": "#ff9f93",
+                        "secondary-container": "#921512",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#930007",
+                        "surface": "#131313",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "inverse-surface": "#e5e2e1",
+                        "on-tertiary-fixed": "#001b3c",
+                        "on-secondary-fixed": "#410001",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed": "#410001",
+                        "tertiary-fixed": "#d5e3ff",
+                        "on-background": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "surface-bright": "#3a3939",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary": "#690003",
+                        "on-secondary-fixed-variant": "#8e1210",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "on-tertiary-fixed-variant": "#004689",
+                        "tertiary-container": "#0072d7",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#131313",
+                        "primary": "#ffb4aa"
+                    },
+                    fontFamily: {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-panel {
+            background: rgba(32, 31, 31, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, transparent 0%, #131313 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Shared Header Wrapper (Context: Destination) -->
+<header class="fixed top-0 z-50 w-full glass-panel border-b border-outline-variant/20 px-4 md:px-12 py-3 flex items-center justify-between">
+<a href="home.html" class="flex items-center gap-3 no-underline text-inherit hover:opacity-90" title="Back to home">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="font-headline text-2xl font-bold tracking-tight text-on-surface">KIDS MODE</h1>
+</a>
+<div class="flex flex-1 justify-end items-center gap-6">
+<div class="hidden md:flex bg-surface-container rounded-full px-4 py-2 items-center gap-3 border border-outline-variant/10 w-full max-w-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant/50" placeholder="Search for cartoons, heroes..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<a href="home.html" class="group flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-highest hover:bg-error-container transition-colors duration-300 no-underline text-inherit">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="font-headline text-xs font-bold uppercase tracking-wider">Exit Kids</span>
+</a>
+<div class="size-10 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="whimsical 3D avatar of a friendly monster with vibrant blue fur and large expressive eyes on a yellow background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsPe3Bwp8HZ7s5rFwQ1mHi5M1oDqk3jNmBWdEgFyM6QZWn-VmycSo6ZUwO1t13EEVJ5Vhlk9XHSthLORz3tY0W6TpggnC4az1toWU6Hrx8smP5bJznUrV8wRJ8iybccKvzbPZEPeQO3xGmMSMNo9ey6z1mL2a7joX0MzIDJSLs5iCfZyZWwnJm_L7lIinfrGIOD6FSpxBdbPUAO2X-D6J1W8iHjI4AaoLWqzkehoxXX4pxAptIuN3UY5sP0h8vKBRr8AFKWWZqxmJI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 pt-20">
+<!-- Hero Spotlight -->
+<section class="relative h-[716px] w-full overflow-hidden">
+<div class="absolute inset-0">
+<img class="w-full h-full object-cover" data-alt="vibrant cinematic scene from an animated space adventure movie showing a small glowing robot on a colorful alien planet with giant purple mushrooms" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3PcE3ytyZsC5YbgIkFQf5Vwxewt2LHW-rRMVVhovW3VXjW0FokeWJXLLpcI2SbfLFFpGckBy48Oo4ZdSFMbyEHDJUzGgl8wTKxLTs1V1fLoP7HauK6hez1phztqrMq5vFOHBn38fb1YbwWNe3EXbSbciPLzDLZDo60n2bL_8M2JLFteVI_-iYxz4xD7oeUeUf559xu77GcmEX4g6_ud2g-Q6PKRg9oFqr1Rjq_TcCCUTUSrVsTjOiHA4zRahZ6w33x0CiS8WbyGff"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative h-full flex flex-col justify-end px-4 md:px-12 pb-16 max-w-4xl">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-sm">New Adventure</span>
+<span class="text-on-surface-variant text-xs font-medium">S1 E1 Now Streaming</span>
+</div>
+<h2 class="font-headline text-6xl md:text-8xl font-black text-on-surface leading-none mb-6 tracking-tighter">
+                        SPACE <br/><span class="text-primary">PUPPIES</span>
+</h2>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-xl mb-8 leading-relaxed">
+                        Join Luna and Sparky on an intergalactic journey to find the legendary Golden Bone hidden in the Milky Way!
+                    </p>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-3 px-8 py-4 bg-primary-container text-on-primary-container rounded-sm hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-headline font-bold uppercase tracking-widest">Watch Now</span>
+</button>
+<button class="size-14 flex items-center justify-center border border-outline-variant rounded-sm hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Navigation Categories (Shared Component Influence) -->
+<section class="px-4 md:px-12 -mt-8 relative z-10 mb-12">
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-4">
+<a class="flex-none w-44 group" href="#">
+<div class="aspect-[4/5] bg-surface-container rounded-xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 group-hover:border-primary/50 transition-all duration-300 group-hover:-translate-y-2 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="face" style="font-variation-settings: 'FILL' 1;">face</span>
+<span class="font-headline font-bold text-on-surface tracking-wide uppercase">Characters</span>
+</div>
+</a>
+<a class="flex-none w-44 group" href="#">
+<div class="aspect-[4/5] bg-surface-container rounded-xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 group-hover:border-tertiary/50 transition-all duration-300 group-hover:-translate-y-2 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-5xl text-tertiary" data-icon="movie" style="font-variation-settings: 'FILL' 1;">movie</span>
+<span class="font-headline font-bold text-on-surface tracking-wide uppercase">Movies</span>
+</div>
+</a>
+<a class="flex-none w-44 group" href="#">
+<div class="aspect-[4/5] bg-surface-container rounded-xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 group-hover:border-secondary/50 transition-all duration-300 group-hover:-translate-y-2 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-5xl text-secondary" data-icon="tv" style="font-variation-settings: 'FILL' 1;">tv</span>
+<span class="font-headline font-bold text-on-surface tracking-wide uppercase">Shows</span>
+</div>
+</a>
+<a class="flex-none w-44 group" href="#">
+<div class="aspect-[4/5] bg-surface-container rounded-xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 group-hover:border-on-surface-variant/50 transition-all duration-300 group-hover:-translate-y-2 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-on-surface-variant/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-5xl text-on-surface-variant" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-headline font-bold text-on-surface tracking-wide uppercase">Learning</span>
+</div>
+</a>
+<a class="flex-none w-44 group" href="#">
+<div class="aspect-[4/5] bg-surface-container rounded-xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 group-hover:border-error/50 transition-all duration-300 group-hover:-translate-y-2 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-error/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-5xl text-error" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline font-bold text-on-surface tracking-wide uppercase">Favorites</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Popular Characters (Shared Avatar Style) -->
+<section class="mb-16">
+<div class="px-4 md:px-12 flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Your Best Friends</h3>
+<p class="text-on-surface-variant text-sm mt-1">Pick a friend to see their stories</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-2 group">
+                        See All <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-8 overflow-x-auto hide-scrollbar px-4 md:px-12">
+<div class="flex-none text-center group cursor-pointer">
+<div class="size-28 rounded-full border-4 border-primary p-1 mb-3 group-hover:scale-110 transition-transform duration-300">
+<img class="w-full h-full object-cover rounded-full" data-alt="close up of a cheerful yellow rubber duck toy with a friendly smile, studio lighting, bright blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLNkdudtgZi2jlj4EIs5ZiCPsL_0l96UASHexyCvbdO_ubN9YOmJK8zra3u87spyoG1qRARnFSCYrLM-EED2z_Y2c0dUST8SPAHUQ2qxaoDpOK294XEX3yZniFD3nEwcydbslHgyL-KYe_4Q2CANMGTbAnDYcEPVSNjfcI-yCgl3o0AR4WEbdOL6kIoEEtpoC7Om-oc1CVwV8YXguAmI34Yxhha9GcxPudyphgGaGRZbmGa1NSClVJhAPN63e_35ornPQAaATZipp2"/>
+</div>
+<p class="font-bold text-sm text-on-surface">Ducky</p>
+</div>
+<div class="flex-none text-center group cursor-pointer">
+<div class="size-28 rounded-full border-4 border-tertiary p-1 mb-3 group-hover:scale-110 transition-transform duration-300">
+<img class="w-full h-full object-cover rounded-full" data-alt="3D render of a cute cartoon dinosaur with large friendly eyes, textured green skin, standing in a sunny prehistoric forest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR_WMPOqrFOerGR0RV5I3NY2qdoF8mr_qZf7F4b85vKrWLCBIVdaf6uNx0V85n1Gxa1zynhVAs_bx3W82PvWhg_xg-C_2SxwevxqSY_aAkhHPktPzpG56-HTun8YZuIIblVPBFCEwSVeXYKemcQwHrhWFPCSiXuYVNJUXXSWDtJmXlkKQkKSbdEJTyg-EvvXWGhyH_dk6lHHdLZ65OMpmPtTJENcGwWVY2z-45cHlJY8HlfD8P2WZ9Wv018ZWp6_Fpu6Er2cpxJ0zj"/>
+</div>
+<p class="font-bold text-sm text-on-surface">Rexy</p>
+</div>
+<div class="flex-none text-center group cursor-pointer">
+<div class="size-28 rounded-full border-4 border-secondary p-1 mb-3 group-hover:scale-110 transition-transform duration-300">
+<img class="w-full h-full object-cover rounded-full" data-alt="whimsical 3D fluffy white rabbit character with large pink ears and a happy expression on a soft purple background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJkIiw4cy74euc0wUokGuj9XkMQqRv-b-9cl27f7ESfddPqi7kJytZj9JBa7AN4Om03LAa1O0NJUl3buBRBgyqvT09z5xzRsNpq7-xczvS0EzK-jmVS-SN2vtUFKJUtg4btwbJVOaiZxVjqW2qDisfC9_RU4GBD4_3So1_JLe3Z54eBhuMV2SDCNn_p60as77e1y5C0SglBnEYdsc9872t1neoU4xCcdIWhaku_rAIans1MOhhB84I-mhOHDlUAqT8ycZNGeuJ2QQM"/>
+</div>
+<p class="font-bold text-sm text-on-surface">Flops</p>
+</div>
+<div class="flex-none text-center group cursor-pointer">
+<div class="size-28 rounded-full border-4 border-error p-1 mb-3 group-hover:scale-110 transition-transform duration-300">
+<img class="w-full h-full object-cover rounded-full" data-alt="a playful orange robot character with a square head and digital blue eyes, sci-fi aesthetic with soft glowing lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvquIQs8ijtF8T2f6nfy0tHx3KIlHeXsvt5RNAcMDbttygTpIzy0gBHfQUKNi7OmDIB0_2w7Ho3or58q_ReupToFVofxjQA8nMlNLlNEIPwADQQbd8rkxjVOxb2fqCa7OV9Xc6mL3HAGR2tiREp0mOulTrO_Xqx5xo0r1E3kLdx_NzzrXDr_kHKTCT1bIsG0z7rok_HkqMFMtWXNynN0rnFqRzHRq5jcvbhPajhlNJGJLSSDBM0jTxIPzGLTJgDLmfBs16tMTfSdZY"/>
+</div>
+<p class="font-bold text-sm text-on-surface">Bip-Bop</p>
+</div>
+<div class="flex-none text-center group cursor-pointer">
+<div class="size-28 rounded-full border-4 border-on-surface-variant p-1 mb-3 group-hover:scale-110 transition-transform duration-300">
+<img class="w-full h-full object-cover rounded-full" data-alt="friendly animated blue whale character jumping out of a stylized ocean with bright colorful coral reefs in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrfCBxSoO6tQgN3YnqLg8WngZ69fY6C6EdbP7Qt2e5EN77lDGW_1zaZl4B_nEC5zE_WY58GIOFxIgHvk_PSoomfb-GALXF3js22kN7mvxi8i7oUYH5tYmd5RtQ_ely1uaeAy8Ghl3rUMIJCKvqZLgiBCKOZt5O59hXKyUsBovuLWDVBFyBJ5MV8BoLhuPXJ8tFqPapEz3cSrWyYwkxfX-o-WKlbfMoD13G3CBEQupISsJghBzJAztQ9AwQ1-DiuwokiYpGwyDNhu0G"/>
+</div>
+<p class="font-bold text-sm text-on-surface">Bubbles</p>
+</div>
+<div class="flex-none text-center group cursor-pointer">
+<div class="size-28 rounded-full border-4 border-primary p-1 mb-3 group-hover:scale-110 transition-transform duration-300">
+<img class="w-full h-full object-cover rounded-full" data-alt="cute cartoon orange cat character with large shiny eyes sitting on a stylized soft cushion, pastel room background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhFYalWEZp7dae88Ds420Fit70LM8_Xl56ciBOK0aAhbjsjOqUlYJ-31-5hG6ynC1w_Lv_k9XyQqC_eOW_VEuc7atbJkf7RvIhmJmm2rWDtJHYhxB8mb8eWHDjarJVyCjZ6S-6BmrLP8E9NHGY4X3sFKbDrKgposxp6T667lPqXSx6rMb6ICqLWkXvdd-jhm9ABPdSu9RRAMmRcAJNoWXjna5YPppa8Hi0UJ4XxIueNx6oelK2ruMTaxkAsFd4omw-yXxwFLC70x3O"/>
+</div>
+<p class="font-bold text-sm text-on-surface">Ginger</p>
+</div>
+</div>
+</section>
+<!-- Playful Grid: Animated Favorites -->
+<section class="px-4 md:px-12 mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Movies for You</h3>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+<!-- Movie Card 1 -->
+<div class="group relative">
+<div class="aspect-[2/3] overflow-hidden rounded-xl border border-outline-variant/10 shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-primary/20">
+<img class="w-full h-full object-cover" data-alt="vibrant animated movie poster of a jungle adventure with friendly lions, monkeys, and colorful tropical birds in a lush rainforest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_JPKHhZueyM9eZ1ETu_maA_EZY-1UY-xeCf0hDV-qjw_IC9ncXJqBa_TFeAWtY-Y5ZJ6E7LzyHhChB26JxABdkibJhNF6EkgKOI0NLXXXL5V6f9UBDdROMB-TR_X6Zioj2hppKmIoWesysA1d2sQBhR79cRg4oDaDOfyl3PyY4RwqkPI-bwNXBwxJQOiQOuBcQIds12uwVFkz_B0ZnyDPvPjjYFS2TMBK1jMoDOUFlOhHyomlAJPNBMfR0s48n38WEK5wRtpjCNpR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<button class="w-full bg-primary text-on-primary py-2 font-bold rounded-sm mb-2">Play</button>
+<button class="w-full bg-surface-container py-2 font-bold rounded-sm">Info</button>
+</div>
+</div>
+<h4 class="mt-4 font-bold text-on-surface truncate">The Jungle King</h4>
+<p class="text-xs text-on-surface-variant">Adventure • 1h 32m</p>
+</div>
+<!-- Movie Card 2 -->
+<div class="group relative">
+<div class="aspect-[2/3] overflow-hidden rounded-xl border border-outline-variant/10 shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-tertiary/20">
+<img class="w-full h-full object-cover" data-alt="animated poster of a magical castle floating in soft pink clouds with glittery sparkles and a rainbow in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlcU8CLzAmopu-r9wzsqtVbiRvO4r91ORMxysLyr5ax8IBjmvlA1meHxGC_6PyxRs-cBLgScdQuWa3vHxnqOepgysdUq4hTkLDHrekVXrfZZiBikWrwWRbUF9rQyOguj17BlsDEnC6s9ENSgVugm8wBTzuT1qtiB_GJD_ZLU92EMGVJReVSIYQ8Sx1rRllU5wSiEprGQoVNjx6tFJNxfRRDMGLpL8JE-9PvIKH2OHa702Q0IogeZaKwk6RSBV9IeSxkOdAjNmK3Hjs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<button class="w-full bg-primary text-on-primary py-2 font-bold rounded-sm mb-2">Play</button>
+<button class="w-full bg-surface-container py-2 font-bold rounded-sm">Info</button>
+</div>
+</div>
+<h4 class="mt-4 font-bold text-on-surface truncate">Magic Sky Kingdom</h4>
+<p class="text-xs text-on-surface-variant">Fantasy • 1h 15m</p>
+</div>
+<!-- Movie Card 3 -->
+<div class="group relative">
+<div class="aspect-[2/3] overflow-hidden rounded-xl border border-outline-variant/10 shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-secondary/20">
+<img class="w-full h-full object-cover" data-alt="animated movie poster featuring a fast race car with big eyes and a friendly grin on a colorful stylized race track" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqXNVnRqTZ8gw6GY8zATMh0IunmrySXXpz9xZRPFClPcyshqA95VyD-ynvZKoJAxZZvyJ-g8VXgV-eLlbwVV0pE0Z8H-dkxdFyi0ThUGdvtd4Lzu_aL9KY5Vk4pYe8ZsxIvkaUJgE0lO33zDmZ22wv3ypOrMzdWv9DL_2pADkm9K-IfFfkFOYEsajhtChdvtEezUCI2-SgZjvHuZZl5IegRuoeDARFsJwgL2iLgK-cb1SwCCFynqtg_LfW0MynPvaKPnFbA_bjEOuS"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<button class="w-full bg-primary text-on-primary py-2 font-bold rounded-sm mb-2">Play</button>
+<button class="w-full bg-surface-container py-2 font-bold rounded-sm">Info</button>
+</div>
+</div>
+<h4 class="mt-4 font-bold text-on-surface truncate">Turbo Dashers</h4>
+<p class="text-xs text-on-surface-variant">Action • 1h 22m</p>
+</div>
+<!-- Movie Card 4 -->
+<div class="group relative">
+<div class="aspect-[2/3] overflow-hidden rounded-xl border border-outline-variant/10 shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-primary/20">
+<img class="w-full h-full object-cover" data-alt="animated movie poster of a girl and her robot dog exploring a futuristic city with flying cars and holographic trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIMG9IASMGXb6Z9ZgntjN_J1oa7QaB1001zgYPgazBJE1nVe9JoUOd5xeMmABFUst-lw5HDoTV934sv0UTNgFLrnRmMeIzzfRgnLr4Ec5_xxb7h3OWg_OHBVLtQs4xBXMnHZWGF9erEA0d4cgInBZb7XYHKp-_ccwoq_paDYHIKWgEVPI4tuWpRj7GzegLY1OQkxh_LYwR6UAsZaMJ1q0B8jYFyKaFt4u8WiMrILlGAhhzKRlF_oQWEuABlje-21Gd9b43szaRtqce"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<button class="w-full bg-primary text-on-primary py-2 font-bold rounded-sm mb-2">Play</button>
+<button class="w-full bg-surface-container py-2 font-bold rounded-sm">Info</button>
+</div>
+</div>
+<h4 class="mt-4 font-bold text-on-surface truncate">Future Pals</h4>
+<p class="text-xs text-on-surface-variant">Sci-Fi • 1h 40m</p>
+</div>
+<!-- Movie Card 5 -->
+<div class="group relative">
+<div class="aspect-[2/3] overflow-hidden rounded-xl border border-outline-variant/10 shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-error/20">
+<img class="w-full h-full object-cover" data-alt="animated movie poster showing a friendly giant made of stone sitting in a beautiful mountain meadow with butterflies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjebk1mmK_wcuOryN9999EXXekEG3dVSwfUNr16G58bZGazBeMi9fe4W3IYSM7qy_UyUtxrYcgTG451uddEdx63Oyldy4_UBHsJhjKL1kF_cfmiMb9VdLd_4DOR4UwF9-AWH7hESNTSbP_Y2bKEAkf4ZeuwM5NUKk47PXYUziJPKa62VLPWsZue8V2aZwO6NYjNPatNDz_E8HkPqbpPD44yLf3WzyRNGzFWt_y4qlY2cExTqvHHdG-YAEI7zvxKHsGUL7n48iz4hdI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<button class="w-full bg-primary text-on-primary py-2 font-bold rounded-sm mb-2">Play</button>
+<button class="w-full bg-surface-container py-2 font-bold rounded-sm">Info</button>
+</div>
+</div>
+<h4 class="mt-4 font-bold text-on-surface truncate">The Stone Giant</h4>
+<p class="text-xs text-on-surface-variant">Fantasy • 1h 28m</p>
+</div>
+</div>
+</section>
+<!-- Continue Watching (Shared Layout Logic) -->
+<section class="bg-surface-container-low py-16">
+<div class="px-4 md:px-12 mb-8">
+<h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Keep Watching</h3>
+<p class="text-on-surface-variant text-sm">Where did you leave off?</p>
+</div>
+<div class="flex gap-6 overflow-x-auto hide-scrollbar px-4 md:px-12">
+<div class="flex-none w-80 group">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-4 border border-outline-variant/10">
+<img class="w-full h-full object-cover" data-alt="vibrant 3D landscape of a cartoon pirate ship sailing on a sparkling blue ocean under a bright yellow sun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIXSAAVj4-nxQPgD9934o3zTJx3xQrceNs4L_elRccPzgPdhdaQRdPUlaI-Wr3zNkUL2werdYaLmYgVeRNQ4wbyPltSfqmAFpz9_vv1BOYOyVVo1wAvQpmTCW7fEb70XEW9nKd80mWPnge9mFsYdbKGvpIijobZADMPx_JgbS-Bl_890rNxBS0mqkzRemlkH6yz3LDlM-gC23kU6gvKElx3hujH8X-sNRr6SKDkBx3Ft07FmimIE4mlNY5umA2PDGKmhz5XP2AqaV7"/>
+<div class="absolute bottom-0 left-0 h-1.5 bg-primary w-2/3 shadow-[0_0_12px_rgba(255,180,170,0.5)]"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-background/40">
+<span class="material-symbols-outlined text-5xl text-white" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<h5 class="font-bold text-on-surface">Captain Beard's Secret</h5>
+<p class="text-xs text-on-surface-variant">12 minutes left</p>
+</div>
+<div class="flex-none w-80 group">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-4 border border-outline-variant/10">
+<img class="w-full h-full object-cover" data-alt="cute animated 3D kitchen scene with food characters like an apple and a bread loaf wearing chef hats" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3v3-EfBynSprZ3dp9-6MRRI9BGDbpwB2FaEaV6sFSPZU62DRrS0FhMl1tuAQSZdFX-E4u6IFVRrOVthng8QrptnXXgNP-VSLBnKAjKAwVe5DH6WFNNd1OdBKltcdtsFLAlNE7IQZ27wHuJI2Abraj4uM2XwoDjMYVpKrWz8ERNIhcywGChxcG6SP_Gcx8QdAbA7oh4wWmzGWFSYTDscuEQFmi0ftDF3Dnudbc3_Ih00I52gvdoi11JwuT5Fbvsa0xTkY8yPWkDN0p"/>
+<div class="absolute bottom-0 left-0 h-1.5 bg-primary w-1/4"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-background/40">
+<span class="material-symbols-outlined text-5xl text-white" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<h5 class="font-bold text-on-surface">The Tasty Kitchen Pals</h5>
+<p class="text-xs text-on-surface-variant">18 minutes left</p>
+</div>
+<div class="flex-none w-80 group">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-4 border border-outline-variant/10">
+<img class="w-full h-full object-cover" data-alt="magical 3D forest scene with glowing flowers and a tiny house inside a tree trunk, soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVfRI5ZlD5IyggPg1y844GzVLfcP9RjIQy3auBoVMt6ZXl_fZYA5MrmghAvldWghOJFdEc-m98MgB5tfKfTEshGNAoXFJ_Bsfc5braSmvr-7ZCEQasvvvD_a9i5QFU_TZJbAquR3zv65CRFs-3JFKCLwrkaddLucVWMM1kcfbyv17rSeuoTpm34iHhvVl6mvigD6DUuaYronq3Uix_GaHK-TW9bnvDmtyriRvvx0qTle4zlhUwqspMEfrLmooTf2F_xHxs07jE26uH"/>
+<div class="absolute bottom-0 left-0 h-1.5 bg-primary w-4/5"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-background/40">
+<span class="material-symbols-outlined text-5xl text-white" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<h5 class="font-bold text-on-surface">Tiny Woods Adventure</h5>
+<p class="text-xs text-on-surface-variant">4 minutes left</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Exit Prominent Modal (Simulated for Design) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+<button class="bg-surface-bright/80 backdrop-blur-xl border border-outline-variant/20 px-8 py-3 rounded-full flex items-center gap-4 shadow-2xl hover:bg-surface-container-highest transition-all group">
+<div class="size-8 rounded-full bg-error flex items-center justify-center text-on-error">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span>
+</div>
+<div class="text-left pr-4">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Parents Only</p>
+<p class="font-headline font-bold text-sm text-on-surface">Exit Kids Mode</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

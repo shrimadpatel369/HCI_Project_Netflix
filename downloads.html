@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Downloads</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflixRed: '#E50914',
+            netflixBlack: '#000000',
+            netflixGrey: '#121212',
+            netflixLightGrey: '#1f1f1f',
+            netflixTextSecondary: '#b3b3b3',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-netflixBlack text-white min-h-screen pb-24">
+  <!-- Top bar -->
+  <header class="sticky top-0 z-50 bg-black px-4 py-3 flex items-center justify-between border-b border-white/5">
+    <a href="my-netflix.html" class="p-2 -ml-2 text-white" aria-label="Back">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+    </a>
+    <h1 class="text-base font-bold tracking-tight">Downloads</h1>
+    <button type="button" id="editBtn" class="text-sm font-semibold text-white py-2 px-1">Edit</button>
+  </header>
+
+  <main class="px-4 pt-4 space-y-6 max-w-lg mx-auto">
+    <!-- Smart Downloads -->
+    <div class="rounded-xl bg-netflixLightGrey border border-white/5 p-4 flex items-start gap-3">
+      <div class="text-netflixRed shrink-0 mt-0.5">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81a.488.488 0 0 0-.5-.41h-3.8c-.25 0-.46.18-.49.42l-.3 2.51c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.3 2.52c.03.24.24.41.48.41h3.8c.25 0 .46-.18.49-.42l.3-2.51c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-sm">Smart Downloads</p>
+        <p class="text-xs text-netflixTextSecondary mt-0.5">Download next episode</p>
+      </div>
+      <button type="button" role="switch" aria-checked="true" id="smartToggle" class="relative inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-full border-0 bg-netflixRed pl-1 transition-colors focus:outline-none focus:ring-2 focus:ring-netflixRed/50">
+        <span class="pointer-events-none inline-block h-5 w-5 translate-x-6 transform rounded-full bg-white shadow transition"></span>
+      </button>
+    </div>
+
+    <!-- Storage -->
+    <section aria-label="Storage">
+      <div class="flex justify-between text-[10px] font-semibold uppercase tracking-wider text-netflixTextSecondary mb-2">
+        <span>Used by Netflix</span>
+        <span>Free space</span>
+      </div>
+      <div class="h-1.5 w-full rounded-full bg-netflixGrey overflow-hidden flex">
+        <div class="h-full bg-netflixRed rounded-l-full" style="width: 9.7%;" title="Netflix 12.4 GB"></div>
+        <div class="h-full flex-1 bg-zinc-700"></div>
+      </div>
+      <div class="flex justify-between items-start mt-3 text-xs">
+        <div class="flex items-center gap-2 text-netflixTextSecondary">
+          <span class="w-2 h-2 rounded-sm bg-netflixRed shrink-0" aria-hidden="true"></span>
+          <span>Netflix: 12.4 GB</span>
+        </div>
+        <span class="text-netflixTextSecondary text-right">Device Storage: 45.2 GB Used</span>
+      </div>
+    </section>
+
+    <!-- Downloaded list -->
+    <section>
+      <h2 class="text-[10px] font-bold uppercase tracking-wider text-netflixTextSecondary mb-3">Downloaded content</h2>
+      <ul class="space-y-4" id="downloadList">
+        <li class="flex items-center gap-3 group">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8_wXu_1HZQyDLcNJIwNABlfA0R7oLHnvfLNEFuuP33TeIytl5xLizsRC3sXmXDizlSjpyXIJkGpa2Ut_yy53ffS4ddMm1SSq61DlwkyAHLfjxJxY9udrwzSsy4S1SCrQkS4YEVMb1gz_GLTiiKxpVLof3UKEFACrWqydzvfH-ugyyMIODPboWboZNs76JMUPvIIWFopzrL45vo_9MYuy5errrDoGm6iL8Y_whIO34pW5MDGPLJeO0CZ64haqe4uIQyzwhsos4VI8B" alt="" class="w-24 h-14 rounded object-cover shrink-0 bg-netflixGrey"/>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-sm truncate">Stranger Things</p>
+            <p class="text-xs text-netflixTextSecondary">S4:E7 • 1.2 GB</p>
+          </div>
+          <button type="button" class="p-2 text-white/90 hover:text-red-400 shrink-0" aria-label="Remove Stranger Things">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+          </button>
+        </li>
+        <li class="flex items-center gap-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJhUJqYEjaIc3B6alDtokp0eibH9YLMTQkkRPB8D-I5T3G9FCiVMlfYYMkk93Z0JkoUr895PB4BzdpskJvvLtsX3X5cusQ4feVhXslalVYfuZvyPcpZ-ItoCOnlaF40EMc2wbwYxIMekxcMpKjitKEfpdZ0uM2EzokFjivO-NDKEW_fTdmoISuMRbBD2E81vMlZZt4MOnYuAE0SHPl5SofxAOemwvzg2g0VSe1CUg5RkANv-UXmFr3B1JwsWCDDH7q4FpNkaJE9tw" alt="" class="w-24 h-14 rounded object-cover shrink-0 bg-netflixGrey"/>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-sm truncate">Extraction 2</p>
+            <p class="text-xs text-netflixTextSecondary">Movie • 2.4 GB</p>
+          </div>
+          <button type="button" class="p-2 text-white/90 hover:text-red-400 shrink-0" aria-label="Remove Extraction 2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+          </button>
+        </li>
+        <li class="flex items-center gap-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXama4_7jbiXRB61U7Y4A2RsKXYrSat1X7mlOozSZsz5NlhlqoQTB-O3Drm6nF0Hct6tbKjSzgXzTULxj7zhpx2qQ9XinMquckeeY7DbaOVTzDJLTPHmKGxi2q6U4HpIotyIVXtfgbZ5n_hZKf3S44ibgJSjz-6hL7lL61livjfKmM7jXX7gx6Z2QSfUEHNxjEry4W_ikUYbKP7aSJwguVQZV8lzlR7TEvi5TBGvyovkXaCoz2ig_bFe_0PEn5yNSS-JwGrUvJpinv" alt="" class="w-24 h-14 rounded object-cover shrink-0 bg-netflixGrey"/>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-sm truncate">The Witcher</p>
+            <p class="text-xs text-netflixTextSecondary">S3:E1 • 850 MB</p>
+          </div>
+          <button type="button" class="p-2 text-white/90 hover:text-red-400 shrink-0" aria-label="Remove The Witcher">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+          </button>
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="w-24 h-14 rounded bg-zinc-700 flex items-center justify-center shrink-0" aria-hidden="true">
+            <svg class="w-8 h-8 text-zinc-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125V4.875m17.25 0c0 .621-.504 1.125-1.125 1.125H4.875c-.621 0-1.125-.504-1.125-1.125m17.25 0v13.5c0 .621-.504 1.125-1.125 1.125H4.875c-.621 0-1.125-.504-1.125-1.125V4.875m0 0h15.75M6 7.5h.008v.008H6V7.5Zm3 0h.008v.008H9V7.5Zm3 0h.008v.008h-.008V7.5Zm-6 3h.008v.008H6v-.008Zm3 0h.008v.008H9v-.008Zm3 0h.008v.008h-.008v-.008Zm-6 3h.008v.008H6v-.008Zm3 0h.008v.008H9v-.008Z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-sm truncate">Glass Onion</p>
+            <p class="text-xs text-netflixTextSecondary">Movie • 1.8 GB</p>
+          </div>
+          <button type="button" class="p-2 text-white/90 hover:text-red-400 shrink-0" aria-label="Remove Glass Onion">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <a href="search.html" class="block w-full py-3.5 rounded-lg bg-netflixLightGrey text-center font-bold text-sm border border-white/5 hover:bg-zinc-800 transition-colors no-underline text-white">
+      Find More to Download
+    </a>
+  </main>
+
+  <!-- Bottom nav (matches mock: 5 tabs, Downloads active) -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-md border-t border-netflixLightGrey z-50" aria-label="Main">
+    <div class="flex justify-around items-center py-2 px-1 max-w-lg mx-auto">
+      <a href="home.html" class="flex flex-col items-center justify-center gap-1 w-1/5 py-1 text-netflixTextSecondary no-underline">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        <span class="text-[10px]">Home</span>
+      </a>
+      <a href="new-and-hot.html" class="flex flex-col items-center justify-center gap-1 w-1/5 py-1 text-netflixTextSecondary no-underline">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"/></svg>
+        <span class="text-[10px] text-center leading-tight">New &amp; Hot</span>
+      </a>
+      <a href="fast-laughs.html" class="flex flex-col items-center justify-center gap-1 w-1/5 py-1 text-netflixTextSecondary no-underline">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/></svg>
+        <span class="text-[10px]">Fast Laughs</span>
+      </a>
+      <a href="downloads.html" class="flex flex-col items-center justify-center gap-1 w-1/5 py-1 text-white no-underline font-semibold" aria-current="page">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+        <span class="text-[10px] font-bold">Downloads</span>
+      </a>
+      <a href="my-netflix.html" class="flex flex-col items-center justify-center gap-1 w-1/5 py-1 text-netflixTextSecondary no-underline">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+        <span class="text-[10px]">More</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('smartToggle');
+      var knob = toggle.querySelector('span');
+      function applySmartState(on) {
+        toggle.setAttribute('aria-checked', on ? 'true' : 'false');
+        toggle.classList.toggle('bg-netflixRed', on);
+        toggle.classList.toggle('bg-zinc-600', !on);
+        knob.classList.toggle('translate-x-6', on);
+        knob.classList.toggle('translate-x-1', !on);
+      }
+      toggle.addEventListener('click', function () {
+        applySmartState(toggle.getAttribute('aria-checked') !== 'true');
+      });
+      document.getElementById('editBtn').addEventListener('click', function () {
+        document.body.classList.toggle('edit-mode');
+        this.textContent = document.body.classList.contains('edit-mode') ? 'Done' : 'Edit';
+      });
+    })();
+  </script>
+</body>
+</html>
